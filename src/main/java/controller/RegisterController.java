@@ -1,5 +1,6 @@
 package controller;
 
+import Mock.MockData;
 import model.Boat;
 import model.Member;
 import model.Register;
@@ -34,6 +35,17 @@ public class RegisterController {
       for (Boat boat : member.getBoatList()) {
         view.printBoat(boat.getName(), boat.getType(), boat.getLength());
       }
+    }
+  }
+
+  /**
+   * Add mock data to register
+   * TODO: Remove before production!!!!
+   */
+  public void addRandomMembers(Integer amount) {
+    MockData mocker = new MockData();
+    for (int i = 0; i < amount; i++) {
+      model.addMember(mocker.getRandomMember(model.getAllMemberIds()));
     }
   }
 }

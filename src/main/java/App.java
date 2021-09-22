@@ -20,6 +20,8 @@ public class App {
     RegisterView regView = new RegisterView();
     RegisterController regController = new RegisterController(regView, regModel);
 
+    regController.addRandomMembers(6);
+
     mainUi.printWelcomeMessage();
     do {
       switch(mainUi.printMainOption()) {
@@ -39,8 +41,6 @@ public class App {
           quit = true;
           break;
       }
-
     } while (!quit);
-
   }
 }
