@@ -27,29 +27,30 @@ public class RegisterController {
     model.addMember(newMember);
   }
 
-  public void editMember( Member member){
+  public void editMember(Member member) {
     String firstName = view.askFirstName();
     String lastName = view.askLastName();
     Long personalNr = view.askPersonalNr();
 
-    if (firstName != null){
+    if (firstName != null) {
       member.setFirstName(firstName);
     }
-    if(lastName != null){
+    if (lastName != null) {
       member.setLastName(lastName);
     }
-    if(personalNr != null){
+    if (personalNr != null) {
       member.setPersonalNr(personalNr);
     }
   }
 
-  public Member searchMemberById(){
-      String memberId = view.askMemberId();
-      Member foundMember = model.findById(memberId);
-      view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
-      return foundMember;
+  public Member searchMemberById() {
+    String memberId = view.askMemberId();
+    Member foundMember = model.findById(memberId);
+    view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
+    return foundMember;
   }
-  public Member searchMemberByPersonalNr(){
+
+  public Member searchMemberByPersonalNr() {
     Long personalNr = view.askPersonalNr();
     Member foundMember = model.findByPersonalNr(personalNr);
     view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
@@ -67,8 +68,8 @@ public class RegisterController {
     }
   }
 
-  public void showMembersCompact(){
-    for (Member member : model.getMembers()){
+  public void showMembersCompact() {
+    for (Member member : model.getMembers()) {
       view.printMemberCompact(member.getFirstName(), member.getLastName(), member.getMemberId(), member.getAmountOfBoats());
     }
   }

@@ -8,10 +8,11 @@ public class RegisterView {
   public RegisterView() {
     this.scan = new Scanner(System.in);
   }
+
   public String askFirstName() {
     System.out.println("Please enter first name: ");
     String input = scan.nextLine();
-    if(isBlank(input)){
+    if (isBlank(input)) {
       return null;
     }
     return input;
@@ -20,7 +21,7 @@ public class RegisterView {
   public String askLastName() {
     System.out.println("Please enter last name: ");
     String input = scan.nextLine();
-    if(isBlank(input)){
+    if (isBlank(input)) {
       return null;
     }
     return input;
@@ -32,19 +33,19 @@ public class RegisterView {
     Integer length = personalNr.length();
     Integer lengthOfPersonalNr = 12;
 
-   if(length.equals(lengthOfPersonalNr)){
-     return Long.parseLong(personalNr);
-   }
-   return null;
+    if (length.equals(lengthOfPersonalNr)) {
+      return Long.parseLong(personalNr);
+    }
+    return null;
   }
 
-  public String askMemberId(){
+  public String askMemberId() {
     System.out.println("Please enter member id:");
     return scan.nextLine();
   }
 
-  public Boolean isBlank(String input){
-    if (input.equals("")){
+  public Boolean isBlank(String input) {
+    if (input.equals("")) {
       return true;
     }
     return false;

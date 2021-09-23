@@ -1,7 +1,5 @@
 package model;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.util.ArrayList;
 
 public class Member {
@@ -17,7 +15,6 @@ public class Member {
     this.personalNr = personalNr;
     this.memberId = new MemberId(allMemberIds).getId();
     this.boatList = new ArrayList<Boat>();
-
   }
 
   public String getFirstName() {

@@ -3,15 +3,14 @@ package Mock;
 import model.Boat;
 import model.BoatType;
 import model.Member;
-import model.Register;
 
-import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class MockData {
   private ArrayList<String> names;
+
   public MockData() {
     this.names = new ArrayList<String>();
     addNames();

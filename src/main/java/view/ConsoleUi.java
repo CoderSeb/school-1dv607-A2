@@ -8,6 +8,7 @@ public class ConsoleUi {
   public ConsoleUi() {
     this.scan = new Scanner(System.in);
   }
+
   public Integer printMainOption() {
     System.out.println("Please choose an option: ");
     System.out.println("1 - Add new member.");
@@ -19,21 +20,21 @@ public class ConsoleUi {
     return scan.nextInt();
   }
 
-  public Integer printSearchOption(){
+  public Integer printSearchOption() {
     System.out.println("1 - Search by personal number.");
     System.out.println("2 - Search by member id.");
     return scan.nextInt();
   }
 
-  public Boolean askYesOrNo(){
+  public Boolean askYesOrNo() {
     System.out.println("Y/(N)?");
-    if (scan.nextLine().equals("Y")){
+    if (scan.nextLine().equals("Y")) {
       return true;
     }
     return false;
   }
 
-  public Boolean askEdit(){
+  public Boolean askEdit() {
     System.out.println("Edit this member?");
     return askYesOrNo();
   }
