@@ -23,10 +23,17 @@ public class RegisterController {
     String firstName = view.askFirstName();
     String lastName = view.askLastName();
     Long personalNr = view.askPersonalNr();
-    view.consumeLeftOverCharacters();
     Member newMember = new Member(firstName, lastName, personalNr, model.getAllMemberIds());
     model.addMember(newMember);
   }
+  // public void editMember(){
+
+ // }
+
+  // public Boolean isBlank(){
+
+  // }
+
 
   public void showMembersVerbose() {
     for (Member member : model.getMembers()) {

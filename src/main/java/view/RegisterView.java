@@ -10,18 +10,44 @@ public class RegisterView {
   }
   public String askFirstName() {
     System.out.println("Please enter first name: ");
-    return scan.nextLine();
+    String input = scan.nextLine();
+    if(isBlank(input)){
+      return null;
+    }
+    return input;
+
   }
 
   public String askLastName() {
     System.out.println("Please enter last name: ");
-    return scan.nextLine();
+    String input = scan.nextLine();
+    if(isBlank(input)){
+      return null;
+    }
+    return input;
   }
 
   public Long askPersonalNr() {
     System.out.println("Please enter personal nr (12-digits): ");
-    return scan.nextLong();
+    String personalNr = scan.nextLine();
+    Integer length = personalNr.length();
+    Integer lengthOfPersonalNr = 12;
+    System.out.println(length);
+    System.out.println(length.equals(0));
+
+   if(length.equals(lengthOfPersonalNr)){
+     return Long.parseLong(personalNr);
+   }
+   return null;
   }
+
+  public Boolean isBlank(String input){
+    if (input.equals("")){
+      return true;
+    }
+    return false;
+  }
+
 
   public void consumeLeftOverCharacters() {
     scan.nextLine();
