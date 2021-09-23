@@ -40,6 +40,11 @@ public class RegisterView {
    return null;
   }
 
+  public String askMemberId(){
+    System.out.println("Please enter member id:");
+    return scan.nextLine();
+  }
+
   public Boolean isBlank(String input){
     if (input.equals("")){
       return true;

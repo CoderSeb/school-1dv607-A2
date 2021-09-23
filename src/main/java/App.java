@@ -38,7 +38,7 @@ public class App {
               break;
             case(2):
               mainUi.consumeLeftOvers();
-              System.out.println("Accessed member id");
+              regController.searchMemberById();
               break;
             default:
               mainUi.consumeLeftOvers();

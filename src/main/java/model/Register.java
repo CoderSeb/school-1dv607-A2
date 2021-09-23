@@ -41,4 +41,13 @@ public class Register {
     }
     return null;
   }
+
+  public Member findByPersonalNr(Long personalNr) {
+    for (Member member : this.members) {
+      if (member.getPersonalNr().equals(personalNr)) {
+        return member;
+      }
+    }
+    return null;
+  }
 }
