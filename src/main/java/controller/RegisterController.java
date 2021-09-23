@@ -43,15 +43,17 @@ public class RegisterController {
     }
   }
 
-  public void searchMemberById(){
+  public Member searchMemberById(){
       String memberId = view.askMemberId();
       Member foundMember = model.findById(memberId);
       view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
+      return foundMember;
   }
-  public void searchMemberByPersonalNr(){
+  public Member searchMemberByPersonalNr(){
     Long personalNr = view.askPersonalNr();
     Member foundMember = model.findByPersonalNr(personalNr);
     view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
+    return foundMember;
   }
 
 

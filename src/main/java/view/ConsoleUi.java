@@ -33,6 +33,11 @@ public class ConsoleUi {
     return false;
   }
 
+  public Boolean askEdit(){
+    System.out.println("Edit this member?");
+    return askYesOrNo();
+  }
+
 
   public void printWelcomeMessage() {
     System.out.println("Welcome to Jolly Roger yacht club!");

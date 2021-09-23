@@ -1,5 +1,6 @@
 import controller.RegisterController;
 import model.BoatType;
+import model.Member;
 import model.Register;
 import view.ConsoleUi;
 import view.RegisterView;
@@ -34,12 +35,17 @@ public class App {
           switch(mainUi.printSearchOption()){
             case(1):
               mainUi.consumeLeftOvers();
-              regController.searchMemberByPersonalNr();
+              Member foundMemberByPersonalNr = regController.searchMemberByPersonalNr();
+              if (mainUi.askEdit()){
+                regController.editMember(foundMemberByPersonalNr);
+              }
               break;
             case(2):
               mainUi.consumeLeftOvers();
-              regController.searchMemberById();
-              // edit or exit?
+              Member foundMemberById = regController.searchMemberById();
+              if (mainUi.askEdit()){
+                regController.editMember(foundMemberById);
+              }
               break;
             default:
               mainUi.consumeLeftOvers();
