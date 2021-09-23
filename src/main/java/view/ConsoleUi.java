@@ -11,7 +11,7 @@ public class ConsoleUi {
   public Integer printMainOption() {
     System.out.println("Please choose an option: ");
     System.out.println("1 - Add new member.");
-    System.out.println("2 - Search member");
+    System.out.println("2 - Search / edit member");
     System.out.println("3 - Show verbose list of members.");
     System.out.println("4 - Show compact list of members.");
     System.out.println("0 - Quit.");
@@ -24,6 +24,15 @@ public class ConsoleUi {
     System.out.println("2 - Search by member id.");
     return scan.nextInt();
   }
+
+  public Boolean askYesOrNo(){
+    System.out.println("Y/(N)?");
+    if (scan.nextLine().equals("Y")){
+      return true;
+    }
+    return false;
+  }
+
 
   public void printWelcomeMessage() {
     System.out.println("Welcome to Jolly Roger yacht club!");

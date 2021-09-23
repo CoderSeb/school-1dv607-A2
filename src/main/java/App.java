@@ -39,6 +39,7 @@ public class App {
             case(2):
               mainUi.consumeLeftOvers();
               regController.searchMemberById();
+              // edit or exit?
               break;
             default:
               mainUi.consumeLeftOvers();
