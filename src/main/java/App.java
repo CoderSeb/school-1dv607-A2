@@ -34,7 +34,7 @@ public class App {
           switch(mainUi.printSearchOption()){
             case(1):
               mainUi.consumeLeftOvers();
-              System.out.println("Accessed personal number");
+              regController.searchMemberByPersonalNr();
               break;
             case(2):
               mainUi.consumeLeftOvers();

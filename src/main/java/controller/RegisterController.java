@@ -48,7 +48,11 @@ public class RegisterController {
       Member foundMember = model.findById(memberId);
       view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
   }
-
+  public void searchMemberByPersonalNr(){
+    Long personalNr = view.askPersonalNr();
+    Member foundMember = model.findByPersonalNr(personalNr);
+    view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
+  }
 
 
   public void showMembersVerbose() {

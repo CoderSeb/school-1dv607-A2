@@ -31,8 +31,6 @@ public class RegisterView {
     String personalNr = scan.nextLine();
     Integer length = personalNr.length();
     Integer lengthOfPersonalNr = 12;
-    System.out.println(length);
-    System.out.println(length.equals(0));
 
    if(length.equals(lengthOfPersonalNr)){
      return Long.parseLong(personalNr);
