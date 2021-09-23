@@ -31,9 +31,25 @@ public class App {
           break;
         case(2):
           mainUi.consumeLeftOvers();
-          regController.showMembersVerbose();
+          switch(mainUi.printSearchOption()){
+            case(1):
+              mainUi.consumeLeftOvers();
+              System.out.println("Accessed personal number");
+              break;
+            case(2):
+              mainUi.consumeLeftOvers();
+              System.out.println("Accessed member id");
+              break;
+            default:
+              mainUi.consumeLeftOvers();
+              break;
+          }
           break;
         case(3):
+          mainUi.consumeLeftOvers();
+          regController.showMembersVerbose();
+          break;
+        case(4):
           mainUi.consumeLeftOvers();
           regController.showMembersCompact();
           break;

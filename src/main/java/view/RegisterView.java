@@ -15,7 +15,6 @@ public class RegisterView {
       return null;
     }
     return input;
-
   }
 
   public String askLastName() {

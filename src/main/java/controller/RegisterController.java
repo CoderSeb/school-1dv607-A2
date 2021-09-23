@@ -26,13 +26,23 @@ public class RegisterController {
     Member newMember = new Member(firstName, lastName, personalNr, model.getAllMemberIds());
     model.addMember(newMember);
   }
-  // public void editMember(){
 
- // }
+  public void editMember( Member member){
+    String firstName = view.askFirstName();
+    String lastName = view.askLastName();
+    Long personalNr = view.askPersonalNr();
 
-  // public Boolean isBlank(){
+    if (firstName != null){
+      member.setFirstName(firstName);
+    }
+    if(lastName != null){
+      member.setLastName(lastName);
+    }
+    if(personalNr != null){
+      member.setPersonalNr(personalNr);
+    }
+  }
 
-  // }
 
 
   public void showMembersVerbose() {
