@@ -38,6 +38,12 @@ public class RegisterController {
     }
   }
 
+  public void showMembersCompact(){
+    for (Member member : model.getMembers()){
+      view.printMemberCompact(member.getFirstName(), member.getLastName(), member.getMemberId(), member.getAmountOfBoats());
+    }
+  }
+
   /**
    * Add mock data to register
    * TODO: Remove before production!!!!

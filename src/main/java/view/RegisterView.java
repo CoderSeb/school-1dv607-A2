@@ -42,6 +42,13 @@ public class RegisterView {
     System.out.println("Personal number: " + personalNr);
   }
 
+  public void printMemberCompact(String firstName, String lastName, String memberId, Integer amountOfBoats) {
+    printLine();
+    System.out.println("Member " + memberId);
+    System.out.println("Name: " + firstName + " " + lastName);
+    System.out.println("Amount of boats: " + amountOfBoats);
+  }
+
   public void printBoat(String name, String type, Double length) {
     System.out.println("-Boat " + name + ", type: " + type + " and with a length of " + length + "ft.");
   }

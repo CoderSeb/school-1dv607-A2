@@ -34,7 +34,8 @@ public class App {
           regController.showMembersVerbose();
           break;
         case(3):
-          // TODO: show members compact.
+          mainUi.consumeLeftOvers();
+          regController.showMembersCompact();
           break;
         default:
           mainUi.closeScanner();

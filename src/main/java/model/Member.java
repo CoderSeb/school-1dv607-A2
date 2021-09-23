@@ -17,6 +17,7 @@ public class Member {
     this.personalNr = personalNr;
     this.memberId = new MemberId(allMemberIds).getId();
     this.boatList = new ArrayList<Boat>();
+
   }
 
   public String getFirstName() {
@@ -66,5 +67,9 @@ public class Member {
       }
     }
     return null;
+  }
+
+  public Integer getAmountOfBoats() {
+    return boatList.size();
   }
 }
