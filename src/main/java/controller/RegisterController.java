@@ -88,6 +88,4 @@ public class RegisterController {
       model.addMember(mocker.getRandomMember(model.getAllMemberIds()));
     }
   }
-
-
 }
