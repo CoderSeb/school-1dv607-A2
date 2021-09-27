@@ -35,15 +35,19 @@ public class App {
             case (1):
               mainUi.consumeLeftOvers();
               Member foundMemberByPersonalNr = regController.searchMemberByPersonalNr();
-              if (mainUi.askEdit()) {
+              if (mainUi.askEditMember()) {
                 regController.editMember(foundMemberByPersonalNr);
+              } else if (mainUi.askDeleteMember()){
+                regController.removeMember(foundMemberByPersonalNr);
               }
               break;
             case (2):
               mainUi.consumeLeftOvers();
               Member foundMemberById = regController.searchMemberById();
-              if (mainUi.askEdit()) {
+              if (mainUi.askEditMember()) {
                 regController.editMember(foundMemberById);
+              } else if(mainUi.askDeleteMember()) {
+                regController.removeMember(foundMemberById);
               }
               break;
             default:

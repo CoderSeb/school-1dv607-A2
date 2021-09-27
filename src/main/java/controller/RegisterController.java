@@ -19,6 +19,10 @@ public class RegisterController {
     // TODO: implement validation...
   }
 
+  public void removeMember(Member member){
+    model.removeMember(member);
+  }
+
   public void createAndAddMember() {
     String firstName = view.askFirstName();
     String lastName = view.askLastName();
@@ -84,4 +88,6 @@ public class RegisterController {
       model.addMember(mocker.getRandomMember(model.getAllMemberIds()));
     }
   }
+
+
 }
