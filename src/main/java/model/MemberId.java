@@ -5,20 +5,22 @@ import java.util.Random;
 
 public class MemberId {
   private String id;
+  private ArrayList<String> membersId;
 
   public MemberId(ArrayList<String> membersId) {
-    this.id = generateUniqueId(membersId);
+    this.membersId = membersId;
+    this.id = generateUniqueId();
   }
 
   public String getId() {
     return id;
   }
 
-  private String generateUniqueId(ArrayList<String> membersId) {
+  private String generateUniqueId() {
     String newId;
     do {
       newId = generateId();
-    } while (!isUnique(newId, membersId));
+    } while (!isUnique(newId));
     return newId;
   }
 
@@ -36,7 +38,7 @@ public class MemberId {
     return result;
   }
 
-  private Boolean isUnique(String newId, ArrayList<String> membersId) {
+  private Boolean isUnique(String newId) {
     for (String memberId : membersId) {
       if (memberId.equals(newId)) return false;
     }

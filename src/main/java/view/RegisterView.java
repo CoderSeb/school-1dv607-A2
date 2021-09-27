@@ -52,10 +52,6 @@ public class RegisterView {
   }
 
 
-  public void consumeLeftOverCharacters() {
-    scan.nextLine();
-  }
-
   public void printLine() {
     System.out.println("----------------------------------");
   }

@@ -1,6 +1,6 @@
 package controller;
 
-import Mock.MockData;
+import mock.MockData;
 import model.Boat;
 import model.Member;
 import model.Register;

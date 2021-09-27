@@ -1,4 +1,4 @@
-package Mock;
+package mock;
 
 import model.Boat;
 import model.BoatType;
