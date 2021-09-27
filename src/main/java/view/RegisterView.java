@@ -39,6 +39,10 @@ public class RegisterView {
     return null;
   }
 
+  public void printNoMemberFound() {
+    System.out.println("No member found!");
+  }
+
   public String askMemberId() {
     System.out.println("Please enter member id:");
     return scan.nextLine();
@@ -47,7 +51,6 @@ public class RegisterView {
   public Boolean isBlank(String input) {
     return input.equals("");
   }
-
 
   public void printLine() {
     System.out.println("----------------------------------");

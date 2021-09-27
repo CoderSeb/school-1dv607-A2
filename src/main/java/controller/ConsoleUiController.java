@@ -25,29 +25,7 @@ public class ConsoleUiController {
           break;
         case (2):
           view.consumeLeftOvers();
-          switch (view.printSearchOption()) {
-            case (1):
-              view.consumeLeftOvers();
-              Member foundMemberByPersonalNr = regController.searchMemberByPersonalNr();
-              if (view.askEditMember()) {
-                regController.editMember(foundMemberByPersonalNr);
-              } else if (view.askDeleteMember()) {
-                regController.removeMember(foundMemberByPersonalNr);
-              }
-              break;
-            case (2):
-              view.consumeLeftOvers();
-              Member foundMemberById = regController.searchMemberById();
-              if (view.askEditMember()) {
-                regController.editMember(foundMemberById);
-              } else if (view.askDeleteMember()) {
-                regController.removeMember(foundMemberById);
-              }
-              break;
-            default:
-              view.consumeLeftOvers();
-              break;
-          }
+          showSearchMenu();
           break;
         case (3):
           view.consumeLeftOvers();
@@ -63,5 +41,35 @@ public class ConsoleUiController {
           break;
       }
     } while (!quit);
+  }
+
+  public void showSearchMenu() {
+    switch (view.printSearchOption()) {
+      case (1):
+        view.consumeLeftOvers();
+        Member foundMemberByPersonalNr = regController.searchMemberByPersonalNr();
+        if (foundMemberByPersonalNr != null) {
+          if (view.askEditMember()) {
+            regController.editMember(foundMemberByPersonalNr);
+          } else if (view.askDeleteMember()) {
+            regController.removeMember(foundMemberByPersonalNr);
+          }
+        }
+        break;
+      case (2):
+        view.consumeLeftOvers();
+        Member foundMemberById = regController.searchMemberById();
+        if (foundMemberById != null) {
+          if (view.askEditMember()) {
+            regController.editMember(foundMemberById);
+          } else if (view.askDeleteMember()) {
+            regController.removeMember(foundMemberById);
+          }
+        }
+        break;
+      default:
+        view.consumeLeftOvers();
+        break;
+    }
   }
 }

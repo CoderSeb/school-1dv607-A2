@@ -49,18 +49,29 @@ public class RegisterController {
 
   public Member searchMemberById() {
     String memberId = view.askMemberId();
-    Member foundMember = model.findById(memberId);
-    view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
-    return foundMember;
+    if (memberId != null) {
+      Member foundMember = model.findById(memberId);
+      if (foundMember != null) {
+        view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
+        return foundMember;
+      }
+    }
+    view.printNoMemberFound();
+    return null;
   }
 
   public Member searchMemberByPersonalNr() {
     Long personalNr = view.askPersonalNr();
-    Member foundMember = model.findByPersonalNr(personalNr);
-    view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
-    return foundMember;
+    if (personalNr != null) {
+      Member foundMember = model.findByPersonalNr(personalNr);
+      if (foundMember != null) {
+        view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
+        return foundMember;
+      }
+    }
+    view.printNoMemberFound();
+    return null;
   }
-
 
   public void showMembersVerbose() {
     for (Member member : model.getMembers()) {

@@ -40,7 +40,9 @@ public class MemberId {
 
   private Boolean isUnique(String newId) {
     for (String memberId : membersId) {
-      if (memberId.equals(newId)) return false;
+      if (memberId.equals(newId)) {
+        return false;
+      }
     }
     return true;
   }
