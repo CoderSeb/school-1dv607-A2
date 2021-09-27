@@ -37,7 +37,7 @@ public class App {
               Member foundMemberByPersonalNr = regController.searchMemberByPersonalNr();
               if (mainUi.askEditMember()) {
                 regController.editMember(foundMemberByPersonalNr);
-              } else if (mainUi.askDeleteMember()){
+              } else if (mainUi.askDeleteMember()) {
                 regController.removeMember(foundMemberByPersonalNr);
               }
               break;
@@ -46,7 +46,7 @@ public class App {
               Member foundMemberById = regController.searchMemberById();
               if (mainUi.askEditMember()) {
                 regController.editMember(foundMemberById);
-              } else if(mainUi.askDeleteMember()) {
+              } else if (mainUi.askDeleteMember()) {
                 regController.removeMember(foundMemberById);
               }
               break;

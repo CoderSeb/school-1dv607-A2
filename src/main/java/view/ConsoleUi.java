@@ -3,7 +3,7 @@ package view;
 import java.util.Scanner;
 
 public class ConsoleUi {
-  private final Scanner scan;
+  private Scanner scan;
 
   public ConsoleUi() {
     this.scan = new Scanner(System.in);

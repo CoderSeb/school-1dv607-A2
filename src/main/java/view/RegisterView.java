@@ -45,10 +45,7 @@ public class RegisterView {
   }
 
   public Boolean isBlank(String input) {
-    if (input.equals("")) {
-      return true;
-    }
-    return false;
+    return input.equals("");
   }
 
 

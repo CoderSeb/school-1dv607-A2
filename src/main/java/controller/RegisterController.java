@@ -19,7 +19,7 @@ public class RegisterController {
     // TODO: implement validation...
   }
 
-  public void removeMember(Member member){
+  public void removeMember(Member member) {
     model.removeMember(member);
   }
 
