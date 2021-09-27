@@ -15,32 +15,36 @@ public class ConsoleUiController {
   }
 
   public void run() {
-    regController.addRandomMembers(6);
+    regController.addRandomMembers(6); // TODO: Remove before production!!!
     view.printWelcomeMessage();
     do {
-      switch (view.printMainOption()) {
-        case (1):
-          view.consumeLeftOvers();
-          regController.createAndAddMember();
-          break;
-        case (2):
-          view.consumeLeftOvers();
-          showSearchMenu();
-          break;
-        case (3):
-          view.consumeLeftOvers();
-          regController.showMembersVerbose();
-          break;
-        case (4):
-          view.consumeLeftOvers();
-          regController.showMembersCompact();
-          break;
-        default:
-          view.closeScanner();
-          quit = true;
-          break;
-      }
+      showMainMenu();
     } while (!quit);
+  }
+
+  public void showMainMenu() {
+    switch (view.printMainOption()) {
+      case (1):
+        view.consumeLeftOvers();
+        regController.createAndAddMember();
+        break;
+      case (2):
+        view.consumeLeftOvers();
+        showSearchMenu();
+        break;
+      case (3):
+        view.consumeLeftOvers();
+        regController.showMembersVerbose();
+        break;
+      case (4):
+        view.consumeLeftOvers();
+        regController.showMembersCompact();
+        break;
+      default:
+        view.closeScanner();
+        quit = true;
+        break;
+    }
   }
 
   public void showSearchMenu() {
