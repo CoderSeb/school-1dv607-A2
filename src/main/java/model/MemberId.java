@@ -3,15 +3,28 @@ package model;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The type Member id.
+ */
 public class MemberId {
   private String id;
   private ArrayList<String> membersId;
 
+  /**
+   * Instantiates a new Member id.
+   *
+   * @param membersId the members id
+   */
   public MemberId(ArrayList<String> membersId) {
     this.membersId = membersId;
     this.id = generateUniqueId();
   }
 
+  /**
+   * Gets id.
+   *
+   * @return the id
+   */
   public String getId() {
     return id;
   }

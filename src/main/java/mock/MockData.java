@@ -1,21 +1,29 @@
 package mock;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Random;
 import model.Boat;
 import model.BoatType;
 import model.Member;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Random;
-
+/**
+ * The type Mock data.
+ */
 public class MockData {
   private ArrayList<String> names;
 
+  /**
+   * Instantiates a new Mock data.
+   */
   public MockData() {
     this.names = new ArrayList<String>();
     addNames();
   }
 
+  /**
+   * Add names.
+   */
   public void addNames() {
     names.add("Liam");
     names.add("Olivia");
@@ -29,6 +37,12 @@ public class MockData {
     names.add("Henry");
   }
 
+  /**
+   * Gets random member.
+   *
+   * @param membersId the members id
+   * @return the random member
+   */
   public Member getRandomMember(ArrayList<String> membersId) {
     Boat sailBoat = new Boat(getRandomName(), BoatType.SAILBOAT, getRandomDouble());
     Boat motorSailer = new Boat(getRandomName(), BoatType.MOTORSAILER, getRandomDouble());
@@ -39,6 +53,11 @@ public class MockData {
     return newMember;
   }
 
+  /**
+   * Gets random name.
+   *
+   * @return the random name
+   */
   public String getRandomName() {
     Random random = new Random();
 
@@ -46,6 +65,11 @@ public class MockData {
     return names.get(randomInt);
   }
 
+  /**
+   * Random long long.
+   *
+   * @return the long
+   */
   public Long randomLong() {
     Random random = new Random();
     char[] digits = new char[12];
@@ -57,6 +81,11 @@ public class MockData {
     return Long.parseLong(new String(digits));
   }
 
+  /**
+   * Gets random double.
+   *
+   * @return the random double
+   */
   public Double getRandomDouble() {
     Random random = new Random();
     DecimalFormat df = new DecimalFormat("#.1");

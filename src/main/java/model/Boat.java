@@ -11,8 +11,8 @@ public class Boat {
   /**
    * Boat constructor.
    *
-   * @param name name of the boat.
-   * @param type Boat type.
+   * @param name   name of the boat.
+   * @param type   Boat type.
    * @param length boat length.
    */
   public Boat(String name, BoatType type, Double length) {
