@@ -111,17 +111,14 @@ public class ConsoleUi {
   }
 
   /**
-   * Print which member.
-   */
-  public void printWhichMember() {
-    System.out.println("Specify member boat list");
-  }
-
-  /**
    * Print welcome message.
    */
   public void printWelcomeMessage() {
-    System.out.println("Welcome to Jolly Roger yacht club!");
+    System.out.println("-+-----------------------------------------+-");
+    System.out.println(" |                                         | ");
+    System.out.println(" |   Welcome to the yacht club manager!    | ");
+    System.out.println(" |                                         | ");
+    System.out.println("-+-----------------------------------------+-");
   }
 
   /**
