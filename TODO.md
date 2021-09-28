@@ -5,10 +5,10 @@ Vad funkar:
 - Ta bort medlem
 - Registera båt
 - Editera båt
-
+- Ta bort båt
 
 Vad ska göras:
-- Ta bort båt
+
 - Felhantering
 - Prepare for persistance
 - Hardcode mock data

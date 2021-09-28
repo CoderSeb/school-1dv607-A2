@@ -141,7 +141,6 @@ public class RegisterController {
       boat.setName(boatName);
     }
     if (boatType != null && Arrays.stream(BoatType.values()).anyMatch(type -> type.equals(boatType))) {
-      System.out.println("Reached here!3");
       boat.setType(boatType);
     }
     if (boatLength != null) {
