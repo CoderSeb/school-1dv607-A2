@@ -87,6 +87,7 @@ public class ConsoleUiController {
    * Show member menu.
    */
   private void showMemberMenu() {
+    regController.showMemberVerbose(currentMember);
     switch (view.printMemberMenu()) {
       case (1):
         regController.editMember(currentMember);
@@ -119,12 +120,18 @@ public class ConsoleUiController {
     switch (view.printBoatOption()) {
       case (1):
         regController.registerBoat(currentMember);
+        showBoatMenu();
         break;
       case (2):
-        regController.editBoat(regController.chooseBoat(currentMember));
+        Boat foundBoat = regController.chooseBoat(currentMember);
+        if (foundBoat != null) {
+          regController.editBoat(foundBoat);
+        }
+        showBoatMenu();
         break;
       case (3):
-        // Remove
+        regController.removeBoat(currentMember);
+        showBoatMenu();
         break;
       default:
         showMemberMenu();

@@ -1,6 +1,5 @@
 import controller.ConsoleUiController;
 import controller.RegisterController;
-import model.PersonalNumber;
 import model.Register;
 import view.ConsoleUi;
 import view.RegisterView;
