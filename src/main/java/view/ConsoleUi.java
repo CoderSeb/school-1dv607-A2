@@ -22,6 +22,7 @@ public class ConsoleUi {
    * @return the integer
    */
   public Integer printMainOption() {
+    System.out.println("");
     System.out.println("Please choose an option: ");
     System.out.println("1 - Add new member.");
     System.out.println("2 - Search member.");
@@ -99,9 +100,11 @@ public class ConsoleUi {
    * @return the integer
    */
   public Integer printMemberMenu() {
+    System.out.println("");
     System.out.println("1 - Edit this member.");
     System.out.println("2 - Remove this member.");
     System.out.println("3 - Member boat menu.");
+    System.out.println("0 - Go back.");
     return parseStringToInt(scan.nextLine());
   }
 
@@ -112,6 +115,7 @@ public class ConsoleUi {
    * @return the integer
    */
   public Integer printBoatOption() {
+    System.out.println("");
     System.out.println("Boat menu: ");
     System.out.println("1 - Add a boat");
     System.out.println("2 - Edit a boat");

@@ -154,7 +154,11 @@ public class RegisterView {
    */
   public String askBoatName() {
     System.out.println("Please enter boat name: ");
-    return scan.nextLine();
+    String boatName = scan.nextLine();
+    if (!boatName.equals("")) {
+      return boatName;
+    }
+    return null;
   }
 
   /**
@@ -165,8 +169,11 @@ public class RegisterView {
   public Double askBoatLength() {
     System.out.println("Please enter boat length in ft: ");
     String input = scan.nextLine().replace(',', '.');
-    Double parsedInput = Double.parseDouble(input);
-    return parsedInput;
+    if (!input.equals("")) {
+      return Double.parseDouble(input);
+    }
+
+    return null;
   }
 
   /**
@@ -178,7 +185,7 @@ public class RegisterView {
   public BoatType askBoatType(BoatType[] boatTypes) {
     System.out.println("Please choose a boat type: ");
     for (BoatType type : boatTypes) {
-      System.out.println(type);
+      System.out.println(type.label);
     }
     String input = scan.nextLine();
 
