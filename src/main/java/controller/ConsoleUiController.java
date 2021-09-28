@@ -39,7 +39,7 @@ public class ConsoleUiController {
   /**
    * Show main menu.
    */
-  public void showMainMenu() {
+  private void showMainMenu() {
     switch (view.printMainOption()) {
       case (1):
         view.consumeLeftOvers();
@@ -67,7 +67,7 @@ public class ConsoleUiController {
   /**
    * Show search menu.
    */
-  public void showSearchMenu() {
+  private void showSearchMenu() {
     switch (view.printSearchOption()) {
       case (1):
         view.consumeLeftOvers();
@@ -92,7 +92,7 @@ public class ConsoleUiController {
   /**
    * Show member menu.
    */
-  public void showMemberMenu() {
+  private void showMemberMenu() {
     switch (view.printMemberMenu()) {
       case (1):
         regController.editMember(currentMember);
@@ -112,7 +112,7 @@ public class ConsoleUiController {
   /**
    * Show boat menu.
    */
-  public void showBoatMenu() {
+  private void showBoatMenu() {
     // TODO: List boats.
     switch (view.printBoatOption()) {
       case (1):
