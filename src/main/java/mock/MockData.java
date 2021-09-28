@@ -3,6 +3,7 @@ package mock;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
+
 import model.Boat;
 import model.BoatType;
 import model.Member;

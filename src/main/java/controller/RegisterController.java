@@ -87,7 +87,7 @@ public class RegisterController {
       view.printMemberVerbose(member.getFirstName(), member.getLastName(), member.getPersonalNr(), member.getMemberId());
       view.printBoatSection();
       for (Boat boat : member.getBoatList()) {
-        view.printBoat(boat.getName(), boat.getType(), boat.getLength());
+        showBoat(boat.getName(), boat.getType(), boat.getLength());
       }
     }
   }
@@ -117,7 +117,30 @@ public class RegisterController {
     member.addBoat(newBoat);
   }
 
+  public void editBoat(Boat boat) {
+    String boatName = view.askBoatName();
+    BoatType boatType = view.askBoatType(BoatType.values());
+    Double boatLength = view.askBoatLength();
 
+    if (boatName != null) {
+      boat.setName(boatName);
+    }
+    if (boatType.label.equals(boat.getType())) {
+      boat.setType(boatType);
+    }
+    if (boatLength != null) {
+      boat.setLength(boatLength);
+    }
+  }
+
+  public void showBoat(String boatName, String boatType, Double boatLength) {
+    view.printBoat(boatName, boatType, boatLength);
+  }
+
+  public Boat chooseBoat(Member member) {
+    String boatName = view.askBoatName();
+    return member.getBoatByName(boatName);
+  }
   // ----------------------------------Member section----------------------------
 
 

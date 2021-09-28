@@ -1,5 +1,6 @@
 package controller;
 
+import model.Boat;
 import model.Member;
 import view.ConsoleUi;
 
@@ -95,9 +96,11 @@ public class ConsoleUiController {
   private void showMemberMenu() {
     switch (view.printMemberMenu()) {
       case (1):
+        view.consumeLeftOvers();
         regController.editMember(currentMember);
         break;
       case (2):
+        view.consumeLeftOvers();
         regController.removeMember(currentMember);
         break;
       case (3):
@@ -108,23 +111,32 @@ public class ConsoleUiController {
     }
   }
 
+  public void showBoats() {
+    for (Boat boat : currentMember.getBoatList()) {
+      regController.showBoat(boat.getName(), boat.getType(), boat.getLength());
+    }
+  }
 
   /**
    * Show boat menu.
    */
   private void showBoatMenu() {
-    // TODO: List boats.
+    showBoats();
     switch (view.printBoatOption()) {
       case (1):
+        view.consumeLeftOvers();
         regController.registerBoat(currentMember);
         break;
       case (2):
-        // Edit
+        view.consumeLeftOvers();
+        regController.editBoat(regController.chooseBoat(currentMember));
         break;
       case (3):
+        view.consumeLeftOvers();
         // Remove
         break;
       default:
+        view.consumeLeftOvers();
         showMemberMenu();
         break;
     }
