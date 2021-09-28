@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Arrays;
 import mock.MockData;
 import model.Boat;
 import model.BoatType;
@@ -53,7 +54,6 @@ public class RegisterController {
     if (memberId != null) {
       Member foundMember = model.findById(memberId);
       if (foundMember != null) {
-        view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
         return foundMember;
       }
     }
@@ -71,7 +71,6 @@ public class RegisterController {
     if (personalNr != null) {
       Member foundMember = model.findByPersonalNr(personalNr);
       if (foundMember != null) {
-        view.printMemberCompact(foundMember.getFirstName(), foundMember.getLastName(), foundMember.getMemberId(), foundMember.getAmountOfBoats());
         return foundMember;
       }
     }
@@ -80,15 +79,25 @@ public class RegisterController {
   }
 
   /**
+   * Show member verbose.
+   *
+   * @param member the member
+   */
+  public void showMemberVerbose(Member member) {
+    view.printMemberVerbose(member.getFirstName(), member.getLastName(), member.getPersonalNr().getPersonalNumber(),
+        member.getMemberId());
+    view.printBoatSection();
+    for (Boat boat : member.getBoatList()) {
+      showBoat(boat.getName(), boat.getType(), boat.getLength());
+    }
+  }
+
+  /**
    * Show members verbose.
    */
   public void showMembersVerbose() {
     for (Member member : model.getMembers()) {
-      view.printMemberVerbose(member.getFirstName(), member.getLastName(), member.getPersonalNr().getPersonalNumber(), member.getMemberId());
-      view.printBoatSection();
-      for (Boat boat : member.getBoatList()) {
-        showBoat(boat.getName(), boat.getType(), boat.getLength());
-      }
+      showMemberVerbose(member);
     }
   }
 
@@ -97,7 +106,8 @@ public class RegisterController {
    */
   public void showMembersCompact() {
     for (Member member : model.getMembers()) {
-      view.printMemberCompact(member.getFirstName(), member.getLastName(), member.getMemberId(), member.getAmountOfBoats());
+      view.printMemberCompact(member.getFirstName(), member.getLastName(), member.getMemberId(),
+          member.getAmountOfBoats());
     }
   }
 
@@ -130,7 +140,8 @@ public class RegisterController {
     if (boatName != null) {
       boat.setName(boatName);
     }
-    if (boatType.label.equals(boat.getType())) {
+    if (boatType != null && Arrays.stream(BoatType.values()).anyMatch(type -> type.equals(boatType))) {
+      System.out.println("Reached here!3");
       boat.setType(boatType);
     }
     if (boatLength != null) {
@@ -158,6 +169,15 @@ public class RegisterController {
   public Boat chooseBoat(Member member) {
     String boatName = view.askBoatName();
     return member.getBoatByName(boatName);
+  }
+
+  /**
+   * Remove boat.
+   *
+   * @param member the member
+   */
+  public void removeBoat(Member member) {
+    member.removeBoat(chooseBoat(member));
   }
   // ----------------------------------Member section----------------------------
 
