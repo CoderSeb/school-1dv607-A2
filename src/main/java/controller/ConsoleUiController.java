@@ -43,19 +43,15 @@ public class ConsoleUiController {
   private void showMainMenu() {
     switch (view.printMainOption()) {
       case (1):
-        view.consumeLeftOvers();
         regController.createAndAddMember();
         break;
       case (2):
-        view.consumeLeftOvers();
         showSearchMenu();
         break;
       case (3):
-        view.consumeLeftOvers();
         regController.showMembersVerbose();
         break;
       case (4):
-        view.consumeLeftOvers();
         regController.showMembersCompact();
         break;
       default:
@@ -71,21 +67,18 @@ public class ConsoleUiController {
   private void showSearchMenu() {
     switch (view.printSearchOption()) {
       case (1):
-        view.consumeLeftOvers();
         currentMember = regController.searchMemberByPersonalNr();
         if (currentMember != null) {
           showMemberMenu();
         }
         break;
       case (2):
-        view.consumeLeftOvers();
         currentMember = regController.searchMemberById();
         if (currentMember != null) {
           showMemberMenu();
         }
         break;
       default:
-        view.consumeLeftOvers();
         break;
     }
   }
@@ -96,11 +89,9 @@ public class ConsoleUiController {
   private void showMemberMenu() {
     switch (view.printMemberMenu()) {
       case (1):
-        view.consumeLeftOvers();
         regController.editMember(currentMember);
         break;
       case (2):
-        view.consumeLeftOvers();
         regController.removeMember(currentMember);
         break;
       case (3):
@@ -111,6 +102,9 @@ public class ConsoleUiController {
     }
   }
 
+  /**
+   * Show boats.
+   */
   public void showBoats() {
     for (Boat boat : currentMember.getBoatList()) {
       regController.showBoat(boat.getName(), boat.getType(), boat.getLength());
@@ -124,19 +118,15 @@ public class ConsoleUiController {
     showBoats();
     switch (view.printBoatOption()) {
       case (1):
-        view.consumeLeftOvers();
         regController.registerBoat(currentMember);
         break;
       case (2):
-        view.consumeLeftOvers();
         regController.editBoat(regController.chooseBoat(currentMember));
         break;
       case (3):
-        view.consumeLeftOvers();
         // Remove
         break;
       default:
-        view.consumeLeftOvers();
         showMemberMenu();
         break;
     }

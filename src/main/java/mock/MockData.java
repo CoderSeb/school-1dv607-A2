@@ -3,7 +3,6 @@ package mock;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
-
 import model.Boat;
 import model.BoatType;
 import model.Member;
@@ -48,7 +47,7 @@ public class MockData {
     Boat sailBoat = new Boat(getRandomName(), BoatType.SAILBOAT, getRandomDouble());
     Boat motorSailer = new Boat(getRandomName(), BoatType.MOTORSAILER, getRandomDouble());
 
-    Member newMember = new Member(getRandomName(), getRandomName(), randomLong(), membersId);
+    Member newMember = new Member(getRandomName(), getRandomName(), randomPersonalNumber(), membersId);
     newMember.addBoat(sailBoat);
     newMember.addBoat(motorSailer);
     return newMember;
@@ -71,15 +70,13 @@ public class MockData {
    *
    * @return the long
    */
-  public Long randomLong() {
+  public String randomPersonalNumber() {
     Random random = new Random();
-    char[] digits = new char[12];
-    digits[0] = '1';
-    digits[1] = '9';
-    for (int i = 2; i < 12; i++) {
+    char[] digits = new char[10];
+    for (int i = 0; i < 10; i++) {
       digits[i] = (char) (random.nextInt(10) + '0');
     }
-    return Long.parseLong(new String(digits));
+    return new String(digits);
   }
 
   /**

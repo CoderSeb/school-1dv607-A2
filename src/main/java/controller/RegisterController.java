@@ -67,7 +67,7 @@ public class RegisterController {
    * @return the member
    */
   public Member searchMemberByPersonalNr() {
-    Long personalNr = view.askPersonalNr();
+    String personalNr = view.askPersonalNr();
     if (personalNr != null) {
       Member foundMember = model.findByPersonalNr(personalNr);
       if (foundMember != null) {
@@ -84,7 +84,7 @@ public class RegisterController {
    */
   public void showMembersVerbose() {
     for (Member member : model.getMembers()) {
-      view.printMemberVerbose(member.getFirstName(), member.getLastName(), member.getPersonalNr(), member.getMemberId());
+      view.printMemberVerbose(member.getFirstName(), member.getLastName(), member.getPersonalNr().getPersonalNumber(), member.getMemberId());
       view.printBoatSection();
       for (Boat boat : member.getBoatList()) {
         showBoat(boat.getName(), boat.getType(), boat.getLength());
@@ -117,6 +117,11 @@ public class RegisterController {
     member.addBoat(newBoat);
   }
 
+  /**
+   * Edit boat.
+   *
+   * @param boat the boat
+   */
   public void editBoat(Boat boat) {
     String boatName = view.askBoatName();
     BoatType boatType = view.askBoatType(BoatType.values());
@@ -133,10 +138,23 @@ public class RegisterController {
     }
   }
 
+  /**
+   * Show boat.
+   *
+   * @param boatName   the boat name
+   * @param boatType   the boat type
+   * @param boatLength the boat length
+   */
   public void showBoat(String boatName, String boatType, Double boatLength) {
     view.printBoat(boatName, boatType, boatLength);
   }
 
+  /**
+   * Choose boat boat.
+   *
+   * @param member the member
+   * @return the boat
+   */
   public Boat chooseBoat(Member member) {
     String boatName = view.askBoatName();
     return member.getBoatByName(boatName);
@@ -150,7 +168,7 @@ public class RegisterController {
   public void createAndAddMember() {
     String firstName = view.askFirstName();
     String lastName = view.askLastName();
-    Long personalNr = view.askPersonalNr();
+    String personalNr = view.askPersonalNr();
     Member newMember = new Member(firstName, lastName, personalNr, model.getAllMemberIds());
     addMember(newMember);
   }
@@ -161,9 +179,12 @@ public class RegisterController {
    * @param member the member
    */
   public void editMember(Member member) {
+    view.printNoEditMessage();
     String firstName = view.askFirstName();
+    view.printNoEditMessage();
     String lastName = view.askLastName();
-    Long personalNr = view.askPersonalNr();
+    view.printNoEditMessage();
+    String personalNr = view.askPersonalNr();
 
     if (firstName != null) {
       member.setFirstName(firstName);

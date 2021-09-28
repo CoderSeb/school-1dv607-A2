@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Member {
   private String firstName;
   private String lastName;
-  private Long personalNr;
+  private PersonalNumber personalNr;
   private String memberId;
   private ArrayList<Boat> boatList;
 
@@ -20,10 +20,10 @@ public class Member {
    * @param personalNr   the personal nr
    * @param allMemberIds the all member ids
    */
-  public Member(String firstName, String lastName, Long personalNr, ArrayList<String> allMemberIds) {
+  public Member(String firstName, String lastName, String personalNr, ArrayList<String> allMemberIds) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.personalNr = personalNr;
+    this.personalNr = new PersonalNumber(personalNr);
     this.memberId = new MemberId(allMemberIds).getId();
     this.boatList = new ArrayList<Boat>();
   }
@@ -69,7 +69,7 @@ public class Member {
    *
    * @return the personal nr
    */
-  public Long getPersonalNr() {
+  public PersonalNumber getPersonalNr() {
     return personalNr;
   }
 
@@ -78,8 +78,8 @@ public class Member {
    *
    * @param personalNr the personal nr
    */
-  public void setPersonalNr(Long personalNr) {
-    this.personalNr = personalNr;
+  public void setPersonalNr(String personalNr) {
+    this.personalNr.setPersonalNumber(personalNr);
   }
 
   /**

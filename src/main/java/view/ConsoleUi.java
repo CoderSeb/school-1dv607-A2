@@ -32,7 +32,17 @@ public class ConsoleUi {
     System.out.println("4 - Show compact list of members.");
     System.out.println("0 - Quit.");
     // TODO: Add more options.
-    return scan.nextInt();
+    return parseStringToInt(scan.nextLine());
+  }
+
+  /**
+   * Parse string to int integer.
+   *
+   * @param input the input
+   * @return the integer
+   */
+  public Integer parseStringToInt(String input) {
+    return Integer.parseInt(input);
   }
 
   /**
@@ -43,7 +53,7 @@ public class ConsoleUi {
   public Integer printSearchOption() {
     System.out.println("1 - Search by personal number.");
     System.out.println("2 - Search by member id.");
-    return scan.nextInt();
+    return parseStringToInt(scan.nextLine());
   }
 
   /**
@@ -92,7 +102,7 @@ public class ConsoleUi {
     System.out.println("1 - Edit this member.");
     System.out.println("2 - Remove this member.");
     System.out.println("3 - Member boat menu.");
-    return scan.nextInt();
+    return parseStringToInt(scan.nextLine());
   }
 
 
@@ -107,7 +117,7 @@ public class ConsoleUi {
     System.out.println("2 - Edit a boat");
     System.out.println("3 - Remove a boat");
     System.out.println("0 - Go back.");
-    return scan.nextInt();
+    return parseStringToInt(scan.nextLine());
   }
 
   /**

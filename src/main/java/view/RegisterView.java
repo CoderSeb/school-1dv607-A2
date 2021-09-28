@@ -1,7 +1,6 @@
 package view;
 
 import java.util.Scanner;
-
 import model.BoatType;
 
 /**
@@ -32,6 +31,13 @@ public class RegisterView {
   }
 
   /**
+   * Print no edit message.
+   */
+  public void printNoEditMessage() {
+    System.out.println("Press enter if no change.");
+  }
+
+  /**
    * Ask last name string.
    *
    * @return the string
@@ -50,16 +56,13 @@ public class RegisterView {
    *
    * @return the long
    */
-  public Long askPersonalNr() {
-    System.out.println("Please enter personal nr (12-digits): ");
-    String personalNr = scan.nextLine();
-    Integer length = personalNr.length();
-    Integer lengthOfPersonalNr = 12;
-
-    if (length.equals(lengthOfPersonalNr)) {
-      return Long.parseLong(personalNr);
+  public String askPersonalNr() {
+    System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
+    String input = scan.nextLine();
+    if (isBlank(input)) {
+      return null;
     }
-    return null;
+    return input;
   }
 
   /**
@@ -111,7 +114,7 @@ public class RegisterView {
    * @param personalNr the personal nr
    * @param memberId   the member id
    */
-  public void printMemberVerbose(String firstName, String lastName, Long personalNr, String memberId) {
+  public void printMemberVerbose(String firstName, String lastName, String personalNr, String memberId) {
     printLine();
     System.out.println("Member " + memberId);
     System.out.println("Name: " + firstName + " " + lastName);
@@ -161,7 +164,9 @@ public class RegisterView {
    */
   public Double askBoatLength() {
     System.out.println("Please enter boat length in ft: ");
-    return scan.nextDouble();
+    String input = scan.nextLine().replace(',', '.');
+    Double parsedInput = Double.parseDouble(input);
+    return parsedInput;
   }
 
   /**
