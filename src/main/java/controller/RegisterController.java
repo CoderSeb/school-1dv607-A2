@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import mock.MockData;
 import model.Boat;
@@ -42,6 +43,15 @@ public class RegisterController {
    */
   public void addMember(Member member) {
     model.addMember(member);
+  }
+
+  /**
+   * Fetch members ids array list.
+   *
+   * @return the array list
+   */
+  public ArrayList<String> fetchMembersIds() {
+    return model.getAllMemberIds();
   }
 
   /**
@@ -180,41 +190,6 @@ public class RegisterController {
   }
   // ----------------------------------Member section----------------------------
 
-
-  /**
-   * Create and add member.
-   */
-  public void createAndAddMember() {
-    String firstName = view.askFirstName();
-    String lastName = view.askLastName();
-    String personalNr = view.askPersonalNr();
-    Member newMember = new Member(firstName, lastName, personalNr, model.getAllMemberIds());
-    addMember(newMember);
-  }
-
-  /**
-   * Edit member.
-   *
-   * @param member the member
-   */
-  public void editMember(Member member) {
-    view.printNoEditMessage();
-    String firstName = view.askFirstName();
-    view.printNoEditMessage();
-    String lastName = view.askLastName();
-    view.printNoEditMessage();
-    String personalNr = view.askPersonalNr();
-
-    if (firstName != null) {
-      member.setFirstName(firstName);
-    }
-    if (lastName != null) {
-      member.setLastName(lastName);
-    }
-    if (personalNr != null) {
-      member.setPersonalNr(personalNr);
-    }
-  }
 
   /**
    * Add mock data to register.

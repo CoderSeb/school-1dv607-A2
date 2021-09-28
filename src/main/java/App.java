@@ -1,7 +1,9 @@
 import controller.ConsoleUiController;
+import controller.MemberController;
 import controller.RegisterController;
 import model.Register;
 import view.ConsoleUi;
+import view.MemberView;
 import view.RegisterView;
 
 /**
@@ -18,7 +20,10 @@ public class App {
     Register regModel = new Register();
     RegisterView regView = new RegisterView();
     RegisterController regController = new RegisterController(regView, regModel);
-    ConsoleUiController consoleController = new ConsoleUiController(mainUi, regController);
+    MemberView memView = new MemberView();
+    MemberController memController = new MemberController(memView);
+
+    ConsoleUiController consoleController = new ConsoleUiController(mainUi, regController, memController);
 
     consoleController.run();
   }

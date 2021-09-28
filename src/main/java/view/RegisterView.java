@@ -16,19 +16,6 @@ public class RegisterView {
     this.scan = new Scanner(System.in);
   }
 
-  /**
-   * Ask first name string.
-   *
-   * @return the string
-   */
-  public String askFirstName() {
-    System.out.println("Please enter first name: ");
-    String input = scan.nextLine();
-    if (isBlank(input)) {
-      return null;
-    }
-    return input;
-  }
 
   /**
    * Print no edit message.
@@ -37,33 +24,6 @@ public class RegisterView {
     System.out.println("Press enter if no change.");
   }
 
-  /**
-   * Ask last name string.
-   *
-   * @return the string
-   */
-  public String askLastName() {
-    System.out.println("Please enter last name: ");
-    String input = scan.nextLine();
-    if (isBlank(input)) {
-      return null;
-    }
-    return input;
-  }
-
-  /**
-   * Ask personal nr long.
-   *
-   * @return the long
-   */
-  public String askPersonalNr() {
-    System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
-    String input = scan.nextLine();
-    if (isBlank(input)) {
-      return null;
-    }
-    return input;
-  }
 
   /**
    * Print no member found.
@@ -83,6 +43,20 @@ public class RegisterView {
   }
 
   /**
+   * Ask personal nr long.
+   *
+   * @return the long
+   */
+  public String askPersonalNr() {
+    System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
+    String input = scan.nextLine();
+    if (isBlank(input)) {
+      return null;
+    }
+    return input;
+  }
+
+  /**
    * Is blank boolean.
    *
    * @param input the input
@@ -90,20 +64,6 @@ public class RegisterView {
    */
   public Boolean isBlank(String input) {
     return input.equals("");
-  }
-
-  /**
-   * Print line.
-   */
-  public void printLine() {
-    System.out.println("----------------------------------");
-  }
-
-  /**
-   * Print boat section.
-   */
-  public void printBoatSection() {
-    System.out.println("Owned boats: ");
   }
 
   /**
@@ -135,6 +95,21 @@ public class RegisterView {
     System.out.println("Name: " + firstName + " " + lastName);
     System.out.println("Amount of boats: " + amountOfBoats);
   }
+
+  /**
+   * Print line.
+   */
+  public void printLine() {
+    System.out.println("----------------------------------");
+  }
+
+  /**
+   * Print boat section.
+   */
+  public void printBoatSection() {
+    System.out.println("Owned boats: ");
+  }
+
 
   /**
    * Print boat.

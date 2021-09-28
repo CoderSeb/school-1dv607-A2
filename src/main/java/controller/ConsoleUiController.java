@@ -10,18 +10,21 @@ import view.ConsoleUi;
 public class ConsoleUiController {
   private ConsoleUi view;
   private RegisterController regController;
+  private MemberController memController;
   private Boolean quit;
   private Member currentMember;
 
   /**
    * Instantiates a new Console ui controller.
    *
-   * @param view          the view
-   * @param regController the reg controller
+   * @param view             the view
+   * @param regController    the reg controller
+   * @param memberController the member controller
    */
-  public ConsoleUiController(ConsoleUi view, RegisterController regController) {
+  public ConsoleUiController(ConsoleUi view, RegisterController regController, MemberController memberController) {
     this.view = view;
     this.regController = regController;
+    this.memController = memberController;
     this.quit = false;
     this.currentMember = null;
   }
@@ -43,7 +46,7 @@ public class ConsoleUiController {
   private void showMainMenu() {
     switch (view.printMainOption()) {
       case (1):
-        regController.createAndAddMember();
+        regController.addMember(memController.createMember(regController.fetchMembersIds()));
         break;
       case (2):
         showSearchMenu();
@@ -90,7 +93,7 @@ public class ConsoleUiController {
     regController.showMemberVerbose(currentMember);
     switch (view.printMemberMenu()) {
       case (1):
-        regController.editMember(currentMember);
+        memController.editMember(currentMember);
         break;
       case (2):
         regController.removeMember(currentMember);
