@@ -110,18 +110,6 @@ public class RegisterView {
     System.out.println("Owned boats: ");
   }
 
-
-  /**
-   * Print boat.
-   *
-   * @param name   the name
-   * @param type   the type
-   * @param length the length
-   */
-  public void printBoat(String name, String type, Double length) {
-    System.out.println("-Boat " + name + ", type: " + type + " and with a length of " + length + "ft.");
-  }
-
   /**
    * Ask boat name string.
    *

@@ -11,6 +11,7 @@ public class ConsoleUiController {
   private ConsoleUi view;
   private RegisterController regController;
   private MemberController memController;
+  private BoatListController boatController;
   private Boolean quit;
   private Member currentMember;
 
@@ -21,10 +22,11 @@ public class ConsoleUiController {
    * @param regController    the reg controller
    * @param memberController the member controller
    */
-  public ConsoleUiController(ConsoleUi view, RegisterController regController, MemberController memberController) {
+  public ConsoleUiController(ConsoleUi view, RegisterController regController, MemberController memberController, BoatListController boatController) {
     this.view = view;
     this.regController = regController;
     this.memController = memberController;
+    this.boatController = boatController;
     this.quit = false;
     this.currentMember = null;
   }
@@ -107,19 +109,10 @@ public class ConsoleUiController {
   }
 
   /**
-   * Show boats.
-   */
-  public void showBoats() {
-    for (Boat boat : currentMember.getBoatList()) {
-      regController.showBoat(boat.getName(), boat.getType(), boat.getLength());
-    }
-  }
-
-  /**
    * Show boat menu.
    */
   private void showBoatMenu() {
-    showBoats();
+    boatController.showBoats();
     switch (view.printBoatOption()) {
       case (1):
         regController.registerBoat(currentMember);

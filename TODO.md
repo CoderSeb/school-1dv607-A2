@@ -6,12 +6,13 @@ Vad funkar:
 - Registera båt
 - Editera båt
 - Ta bort båt
+- Hardcode mock data
+
 
 Vad ska göras:
 
 - Felhantering
 - Prepare for persistance
-- Hardcode mock data
 - Check that controller is active and view is passive
 - (Write our own automatic tests)
 - Update class diagram
@@ -21,5 +22,5 @@ Vad ska göras:
 
 ( Note: 
 - Check code for Information Expert and Creator
-- Observer pattern
+~~- Observer pattern~~
 - )

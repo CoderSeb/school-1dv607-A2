@@ -10,7 +10,7 @@ public class Member {
   private String lastName;
   private PersonalNumber personalNr;
   private String memberId;
-  private ArrayList<Boat> boatList;
+  private BoatList boatList;
 
   /**
    * Instantiates a new Member.
@@ -25,7 +25,7 @@ public class Member {
     this.lastName = lastName;
     this.personalNr = new PersonalNumber(personalNr);
     this.memberId = new MemberId(allMemberIds).getId();
-    this.boatList = new ArrayList<Boat>();
+    this.boatList = new BoatList();
   }
 
   /**
@@ -41,7 +41,7 @@ public class Member {
     this.lastName = mockedLastName;
     this.personalNr = new PersonalNumber(mockedPersonalNr);
     this.memberId = mockedMemberId;
-    this.boatList = new ArrayList<Boat>();
+    this.boatList = new BoatList();
   }
 
   /**
@@ -113,7 +113,7 @@ public class Member {
    * @return the boat list
    */
   public ArrayList<Boat> getBoatList() {
-    return boatList;
+    return boatList.getBoats();
   }
 
   /**
@@ -122,7 +122,7 @@ public class Member {
    * @param newBoat the new boat
    */
   public void addBoat(Boat newBoat) {
-    boatList.add(newBoat);
+    boatList.addBoat(newBoat);
   }
 
   /**
@@ -131,7 +131,7 @@ public class Member {
    * @param boat the boat
    */
   public void removeBoat(Boat boat) {
-    boatList.remove(boat);
+    boatList.removeBoat(boat);
   }
 
   /**
@@ -141,12 +141,7 @@ public class Member {
    * @return the boat by name
    */
   public Boat getBoatByName(String boatName) {
-    for (Boat boat : boatList) {
-      if (boat.getName().equals(boatName)) {
-        return boat;
-      }
-    }
-    return null;
+    return boatList.findBoatByName(boatName);
   }
 
   /**
