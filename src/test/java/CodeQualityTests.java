@@ -1,5 +1,11 @@
 // This work is licensed under a CC BY 4.0 license. https://creativecommons.org/licenses/by/4.0/
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -7,13 +13,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import org.junit.jupiter.api.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public class CodeQualityTests {
   final static String checkStyleXmlFile = "./build/reports/checkstyle/main.xml";
@@ -25,12 +27,25 @@ public class CodeQualityTests {
   final static String srcRoot = "src/main/java";  // set this accordingly
   final static String buildRoot = "build/classes/java/main";  // set this accordingly
 
+  static class TestCase {
+    String name;
+    String className; // this is what gitlab presents as the suite column
+    String fileName;
+    ArrayList<Failure> failures = new ArrayList<>();
+  }
+
+  static class Failure {
+    String message = "";
+    String type = "";
+    String text = "";
+  }
+
   @Test
   public void codeQuality() {
     int errors = 0;
     errors = checkStyleTest();
     errors += findBugsTest();
-    assertTrue(errors < maxQualityErrors, "Max amount (" + maxQualityErrors + ") of quality issues exceeded:" + errors);
+    assertTrue(errors < maxQualityErrors, "Max amount (" + maxQualityErrors +") of quality issues exceeded:" + errors);
   }
 
   public int findBugsTest() {
@@ -46,7 +61,7 @@ public class CodeQualityTests {
       NodeList bpNodes = doc.getElementsByTagName("BugPattern");
       for (int bpIx = 0; bpIx < bpNodes.getLength(); bpIx++) {
         Node bpNode = bpNodes.item(bpIx);
-        String type = bpNode.getAttributes().getNamedItem("type").getTextContent();
+        String type =  bpNode.getAttributes().getNamedItem("type").getTextContent();
         String details = fixBugPatternText(bpNode.getTextContent().trim());
         bugPatterns.put(type, details);
       }
@@ -55,25 +70,20 @@ public class CodeQualityTests {
       HashMap<String, TestCase> bugInstances = new HashMap<>();
 
       // we should actually add all the checked files first so we can get some passing tests too
-      NodeList classNodes = doc.getElementsByTagName("Jar");
+      // TODO: this should use the FileStats tag instead
+      NodeList classNodes = doc.getElementsByTagName("FileStats");
       for (int cnIx = 0; cnIx < classNodes.getLength(); cnIx++) {
-        String fileName = classNodes.item(cnIx).getTextContent();
-        fileName = fileName.replace("\\", "/");
-        fileName = fileName.substring(fileName.indexOf(buildRoot + "/") + buildRoot.length() + 1);
-        if (!fileName.contains("$")) {
-          fileName = fileName.replace(".class", ".java");
-          TestCase tc = new TestCase();
-          tc.fileName = fileName;
-          tc.className = "FindBugs Issues";
-          tc.name = fileName;
-          bugInstances.put(fileName, tc);
-        }
-
+        String fileName = classNodes.item(cnIx).getAttributes().getNamedItem("path").getNodeValue();
+        TestCase tc = new TestCase();
+        tc.fileName = fileName;
+        tc.className = "FindBugs Issues";
+        tc.name = fileName;
+        bugInstances.put(fileName, tc);
       }
 
       NodeList biNodes = doc.getElementsByTagName("BugInstance");
       for (int biIx = 0; biIx < biNodes.getLength(); biIx++) {
-        Element biNode = (Element) biNodes.item(biIx);
+        Element biNode = (Element)biNodes.item(biIx);
 
         String path = biNode.getElementsByTagName("SourceLine").item(0).getAttributes().getNamedItem("sourcepath").getTextContent();
         String longMessage = biNode.getElementsByTagName("LongMessage").item(0).getTextContent();
@@ -85,15 +95,18 @@ public class CodeQualityTests {
 
 
         TestCase tc = bugInstances.get(path);
+        if (tc == null) {
+          System.err.println("Could not find bug instance for:"  + path);
+        } else {
+          Failure f = new Failure();
+          tc.failures.add(f);
 
-        Failure f = new Failure();
-        tc.failures.add(f);
 
+          f.type = "FindBugs Issue";
+          f.message = "FindBugs Issues";
 
-        f.type = "FindBugs Issue";
-        f.message = "FindBugs Issues";
-
-        f.text += "lines: " + line + System.lineSeparator() + longMessage + System.lineSeparator() + bugPatterns.get(type);
+          f.text += "lines: " + line + System.lineSeparator() + longMessage + System.lineSeparator() + bugPatterns.get(type);
+        }
 
         errors++;
       }
@@ -116,7 +129,7 @@ public class CodeQualityTests {
   }
 
   private void reportTestCaseToConsole(Collection<TestCase> values) {
-    for (TestCase t : values) {
+    for(TestCase t : values) {
       System.out.println(t.failures.size() + " " + t.className + " in " + t.fileName);
       for (Failure f : t.failures) {
         System.out.println("text:" + fixStringLength(f.text, 100) + System.lineSeparator());
@@ -152,14 +165,15 @@ public class CodeQualityTests {
       return out;
 
     } catch (ParserConfigurationException | SAXException | IOException e) {
-      e.printStackTrace();
+      System.err.println(e.getMessage());
     }
 
+    System.err.println("parsing of text failed possibly due to bad html/xml formatting for, start text --->" +  str + "<--- end text");
     // parsing seem to have failed so we revert so some crappy replacements instead...
     str = str.replace("    ", "\t");
     str = str.replace("\n    ", " ");
     // removes some select html tags
-    final String[] remove = new String[]{"<p>", "</p>", "<code>", "</code>", "<pre>", "</pre>"};
+    final String[] remove = new String[] {"<p>", "</p>", "<code>", "</code>", "<pre>", "</pre>"};
     String ret = str;
     for (String r : remove) {
       ret = ret.replace(r, "");
@@ -177,7 +191,7 @@ public class CodeQualityTests {
 
     String text = item.getTextContent();
     text = text.replace("\n", " ");
-    while (text.contains("  ")) {
+    while(text.contains("  ")) {
       text = text.replace("  ", " ");
     }
 
@@ -204,7 +218,7 @@ public class CodeQualityTests {
         TestCase tc = new TestCase();
         testCases.add(tc);
         fileName = fileName.replace('\\', '/');
-        tc.name = fileName.substring(fileName.indexOf(srcRoot + "/") + srcRoot.length() + 1);
+        tc.name = fileName.substring(fileName.indexOf(srcRoot+  "/") + srcRoot.length() + 1);
         tc.className = "CheckStyle Issues";
         tc.fileName = fileName;
 
@@ -217,8 +231,8 @@ public class CodeQualityTests {
           Node childNode = childNodes.item(cnIx);
           if (childNode.getNodeName().equals("error")) {
             String message = childNode.getAttributes().getNamedItem("message").getTextContent();
-            String line = childNode.getAttributes().getNamedItem("line").getTextContent();
-            String col = childNode.getAttributes().getNamedItem("column") != null ? " column:" + childNode.getAttributes().getNamedItem("column").getTextContent() : "";
+            String line =  childNode.getAttributes().getNamedItem("line").getTextContent();
+            String col =  childNode.getAttributes().getNamedItem("column") != null ? " column:" + childNode.getAttributes().getNamedItem("column").getTextContent() : "";
 
             f.text += "line: " + line + " column:" + col + System.lineSeparator() + message;
             errors++;
@@ -270,7 +284,7 @@ public class CodeQualityTests {
     String[] parts = str.split("\r\n|\n");
     String ret = "";
 
-    for (String p : parts) {
+    for (String p :parts) {
       String fixed = fixSingleStringLength(p, maxLen);
       if (!fixed.equals(System.lineSeparator())) {
         ret += fixed;
@@ -288,20 +302,20 @@ public class CodeQualityTests {
 
     file.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + ls);
 
-    int[] errorCount = new int[]{0};
+    int []errorCount = new int[] {0};
 
     testCases.forEach(tc -> errorCount[0] += tc.failures.size());
 
-    file.write("<testsuite package=\"" + suitePackage + "\" time=\"0\" tests=\"" + testCases.size() + "\" errors=\"" + errorCount[0] + "\" name=\"" + suiteName + "\">" + ls);
+    file.write("<testsuite package=\"" + suitePackage + "\" time=\"0\" tests=\"" + testCases.size() + "\" errors=\"" + errorCount[0] +"\" name=\"" + suiteName + "\">" + ls);
 
     for (TestCase tc : testCases) {
-      file.write("<testcase time=\"0\" name=\"" + tc.name + "\" classname=\"" + tc.className + "\">" + ls);
+      file.write("<testcase time=\"0\" name=\"" + tc.name + "\" classname=\"" + tc.className +"\">" + ls);
       if (tc.failures.size() > 0) {
 
         // combine all messages into one for better printing in gitlab
         file.write("<failure message=\"issues\" ><![CDATA[");
         for (Failure f : tc.failures) {
-          file.write(fixStringLength(f.text, 75) + ls + "----------------" + ls);
+          file.write(fixStringLength(f.text, 75) +  ls + "----------------" + ls);
         }
         file.write("]]></failure>" + ls);
       }
@@ -318,18 +332,5 @@ public class CodeQualityTests {
   private DocumentBuilder getDocumentBuilder() throws ParserConfigurationException {
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     return dbFactory.newDocumentBuilder();
-  }
-
-  static class TestCase {
-    String name;
-    String className; // this is what gitlab presents as the suite column
-    String fileName;
-    ArrayList<Failure> failures = new ArrayList<>();
-  }
-
-  static class Failure {
-    String message = "";
-    String type = "";
-    String text = "";
   }
 }

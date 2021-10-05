@@ -123,7 +123,6 @@ public class RegisterController {
 
   // ----------------------------------Boat section----------------------------
 
-
   /**
    * Register boat.
    *
@@ -188,8 +187,8 @@ public class RegisterController {
   public void removeBoat(Member member) {
     member.removeBoat(chooseBoat(member));
   }
-  // ----------------------------------Member section----------------------------
 
+  // ----------------------------------Member section----------------------------
 
   /**
    * Add mock data to register.
