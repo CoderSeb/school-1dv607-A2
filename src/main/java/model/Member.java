@@ -29,6 +29,22 @@ public class Member {
   }
 
   /**
+   * Instantiates a new Member.
+   *
+   * @param mockedFirstName  the mocked first name
+   * @param mockedLastName   the mocked last name
+   * @param mockedPersonalNr the mocked personal nr
+   * @param mockedMemberId   the mocked member id
+   */
+  public Member(String mockedFirstName, String mockedLastName, String mockedPersonalNr, String mockedMemberId) {
+    this.firstName = mockedFirstName;
+    this.lastName = mockedLastName;
+    this.personalNr = new PersonalNumber(mockedPersonalNr);
+    this.memberId = mockedMemberId;
+    this.boatList = new ArrayList<Boat>();
+  }
+
+  /**
    * Gets first name.
    *
    * @return the first name

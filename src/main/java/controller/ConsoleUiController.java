@@ -33,7 +33,7 @@ public class ConsoleUiController {
    * Run.
    */
   public void run() {
-    regController.addRandomMembers(6); // TODO: Remove before production!!!
+    regController.loadFromMock(); // TODO: Remove before production!!!
     view.printWelcomeMessage();
     do {
       showMainMenu();

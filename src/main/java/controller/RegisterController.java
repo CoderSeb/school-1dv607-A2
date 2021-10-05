@@ -192,14 +192,11 @@ public class RegisterController {
 
   /**
    * Add mock data to register.
-   * TODO: Remove before production!!!!
-   *
-   * @param amount the amount
    */
-  public void addRandomMembers(Integer amount) {
-    MockData mocker = new MockData();
-    for (int i = 0; i < amount; i++) {
-      model.addMember(mocker.getRandomMember(model.getAllMemberIds()));
+  public void loadFromMock() {
+    MockData mockData = new MockData();
+    for (Member member : mockData.loadMembers()) {
+      model.addMember(member);
     }
   }
 }
