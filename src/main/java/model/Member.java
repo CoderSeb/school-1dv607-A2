@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+
 /**
  * The type Member.
  */
@@ -112,8 +113,8 @@ public class Member {
    *
    * @return the boat list
    */
-  public ArrayList<Boat> getBoatList() {
-    return boatList.getBoats();
+  public BoatList getBoatList() {
+    return boatList;
   }
 
   /**

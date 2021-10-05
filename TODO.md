@@ -10,7 +10,10 @@ Vad funkar:
 
 
 Vad ska göras:
-
+- Undersöka varför BOAT fungerar (dependancies)
+- Remove Boat, BoatType and personal Number Models from Register Controller dependencies
+- Remove Boat, BaotList and Member model dependancy from ConsoleUiController
+- Remove BoatType dependency from RegisterView
 - Felhantering
 - Prepare for persistance
 - Check that controller is active and view is passive

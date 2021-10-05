@@ -2,10 +2,16 @@ package view;
 
 import java.util.Scanner;
 
+/**
+ * The type Boat list view.
+ */
 public class BoatListView {
   private Scanner scan;
 
-  public BoatListView(){
+  /**
+   * Instantiates a new Boat list view.
+   */
+  public BoatListView() {
     this.scan = new Scanner(System.in);
   }
 

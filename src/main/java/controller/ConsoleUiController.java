@@ -21,8 +21,10 @@ public class ConsoleUiController {
    * @param view             the view
    * @param regController    the reg controller
    * @param memberController the member controller
+   * @param boatController   the boat controller
    */
-  public ConsoleUiController(ConsoleUi view, RegisterController regController, MemberController memberController, BoatListController boatController) {
+  public ConsoleUiController(ConsoleUi view, RegisterController regController, MemberController memberController,
+                             BoatListController boatController) {
     this.view = view;
     this.regController = regController;
     this.memController = memberController;
@@ -112,7 +114,7 @@ public class ConsoleUiController {
    * Show boat menu.
    */
   private void showBoatMenu() {
-    boatController.showBoats();
+    boatController.showBoats(currentMember.getBoatList());
     switch (view.printBoatOption()) {
       case (1):
         regController.registerBoat(currentMember);

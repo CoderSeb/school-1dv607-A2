@@ -15,16 +15,19 @@ import view.RegisterView;
 public class RegisterController {
   private RegisterView view;
   private Register model;
+  private MemberController memController;
 
   /**
    * Instantiates a new Register controller.
    *
-   * @param view  the view
-   * @param model the model
+   * @param view          the view
+   * @param model         the model
+   * @param memController the mem controller
    */
-  public RegisterController(RegisterView view, Register model) {
+  public RegisterController(RegisterView view, Register model, MemberController memController) {
     this.view = view;
     this.model = model;
+    this.memController = memController;
   }
 
   /**
@@ -97,9 +100,7 @@ public class RegisterController {
     view.printMemberVerbose(member.getFirstName(), member.getLastName(), member.getPersonalNr().getPersonalNumber(),
         member.getMemberId());
     view.printBoatSection();
-    for (Boat boat : member.getBoatList()) {
-      showBoat(boat.getName(), boat.getType(), boat.getLength());
-    }
+    memController.showBoatList(member);
   }
 
   /**
@@ -155,17 +156,6 @@ public class RegisterController {
     if (boatLength != null) {
       boat.setLength(boatLength);
     }
-  }
-
-  /**
-   * Show boat.
-   *
-   * @param boatName   the boat name
-   * @param boatType   the boat type
-   * @param boatLength the boat length
-   */
-  public void showBoat(String boatName, String boatType, Double boatLength) {
-    view.printBoat(boatName, boatType, boatLength);
   }
 
   /**

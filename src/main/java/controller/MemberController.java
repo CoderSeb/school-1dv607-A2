@@ -9,15 +9,18 @@ import view.MemberView;
  */
 public class MemberController {
   private MemberView view;
+  private BoatListController boatListController;
 
 
   /**
    * Instantiates a new Member controller.
    *
-   * @param view the view
+   * @param view               the view
+   * @param boatListController the boat list controller
    */
-  public MemberController(MemberView view) {
+  public MemberController(MemberView view, BoatListController boatListController) {
     this.view = view;
+    this.boatListController = boatListController;
   }
 
   /**
@@ -57,5 +60,15 @@ public class MemberController {
       member.setPersonalNr(personalNr);
     }
   }
+
+  /**
+   * Show boat list.
+   *
+   * @param member the member
+   */
+  public void showBoatList(Member member) {
+    boatListController.showBoats(member.getBoatList());
+  }
+
 
 }
