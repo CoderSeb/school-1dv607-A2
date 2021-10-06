@@ -7,15 +7,17 @@ Vad funkar:
 - Editera båt
 - Ta bort båt
 - Hardcode mock data
+- Remove BoatType dependency from RegisterView
+- Remove Boat and PersonalNumber Models from RegisterController dependencies
+- Remove Boat, BaotList and Member model dependancy from ConsoleUiController
 
 
 Vad ska göras:
-- Undersöka varför BOAT fungerar (dependancies)
-- Remove Boat, BoatType and personal Number Models from Register Controller dependencies
-- Remove Boat, BaotList and Member model dependancy from ConsoleUiController
-- Remove BoatType dependency from RegisterView
+- Enums för menyval!!! (Sebastian).
+- Flytta memenerId till register (Martin).
+- Iterables för getMember och getBoatlist (Elena).
 - Felhantering
-- Prepare for persistance
+- Prepare for persistance (Elena).
 - Check that controller is active and view is passive
 - (Write our own automatic tests)
 - Update class diagram
