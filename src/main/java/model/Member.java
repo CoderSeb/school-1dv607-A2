@@ -11,7 +11,7 @@ public class Member {
   private String lastName;
   private PersonalNumber personalNr;
   private String memberId;
-  private BoatList boatList;
+  private ArrayList<Boat> boatList;
 
   /**
    * Instantiates a new Member.
@@ -26,7 +26,7 @@ public class Member {
     this.lastName = lastName;
     this.personalNr = new PersonalNumber(personalNr);
     this.memberId = new MemberId(allMemberIds).getId();
-    this.boatList = new BoatList();
+    this.boatList = new ArrayList<Boat>();
   }
 
   /**
@@ -42,7 +42,7 @@ public class Member {
     this.lastName = mockedLastName;
     this.personalNr = new PersonalNumber(mockedPersonalNr);
     this.memberId = mockedMemberId;
-    this.boatList = new BoatList();
+    this.boatList = new ArrayList<Boat>();
   }
 
   /**
@@ -86,8 +86,8 @@ public class Member {
    *
    * @return the personal nr
    */
-  public PersonalNumber getPersonalNr() {
-    return personalNr;
+  public String getPersonalNr() {
+    return personalNr.getPersonalNumber();
   }
 
   /**
@@ -113,8 +113,23 @@ public class Member {
    *
    * @return the boat list
    */
-  public BoatList getBoatList() {
+  public ArrayList<Boat> getBoatList() {
     return boatList;
+  }
+
+  /**
+   * Find boat by name boat.
+   *
+   * @param boatName the boat name
+   * @return the boat
+   */
+  public Boat findBoatByName(String boatName) {
+    for (Boat boat : boatList) {
+      if (boat.getName().equals(boatName)) {
+        return boat;
+      }
+    }
+    return null;
   }
 
   /**
@@ -123,7 +138,7 @@ public class Member {
    * @param newBoat the new boat
    */
   public void addBoat(Boat newBoat) {
-    boatList.addBoat(newBoat);
+    boatList.add(newBoat);
   }
 
   /**
@@ -132,17 +147,7 @@ public class Member {
    * @param boat the boat
    */
   public void removeBoat(Boat boat) {
-    boatList.removeBoat(boat);
-  }
-
-  /**
-   * Gets boat by name.
-   *
-   * @param boatName the boat name
-   * @return the boat by name
-   */
-  public Boat getBoatByName(String boatName) {
-    return boatList.findBoatByName(boatName);
+    boatList.remove(boat);
   }
 
   /**
