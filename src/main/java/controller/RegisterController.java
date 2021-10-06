@@ -1,10 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import mock.MockData;
-import model.Boat;
-import model.BoatType;
 import model.Member;
 import model.Register;
 import view.RegisterView;
@@ -97,10 +94,10 @@ public class RegisterController {
    * @param member the member
    */
   public void showMemberVerbose(Member member) {
-    view.printMemberVerbose(member.getFirstName(), member.getLastName(), member.getPersonalNr().getPersonalNumber(),
+    view.printMemberVerbose(member.getFirstName(), member.getLastName(), member.getPersonalNr(),
         member.getMemberId());
     view.printBoatSection();
-    memController.showBoatList(member);
+    memController.showBoats(member);
   }
 
   /**
@@ -124,59 +121,6 @@ public class RegisterController {
 
   // ----------------------------------Boat section----------------------------
 
-  /**
-   * Register boat.
-   *
-   * @param member the member
-   */
-  public void registerBoat(Member member) {
-    String name = view.askBoatName();
-    BoatType type = view.askBoatType(BoatType.values());
-    Double length = view.askBoatLength();
-    Boat newBoat = new Boat(name, type, length);
-    member.addBoat(newBoat);
-  }
-
-  /**
-   * Edit boat.
-   *
-   * @param boat the boat
-   */
-  public void editBoat(Boat boat) {
-    String boatName = view.askBoatName();
-    BoatType boatType = view.askBoatType(BoatType.values());
-    Double boatLength = view.askBoatLength();
-
-    if (boatName != null) {
-      boat.setName(boatName);
-    }
-    if (boatType != null && Arrays.stream(BoatType.values()).anyMatch(type -> type.equals(boatType))) {
-      boat.setType(boatType);
-    }
-    if (boatLength != null) {
-      boat.setLength(boatLength);
-    }
-  }
-
-  /**
-   * Choose boat boat.
-   *
-   * @param member the member
-   * @return the boat
-   */
-  public Boat chooseBoat(Member member) {
-    String boatName = view.askBoatName();
-    return member.getBoatByName(boatName);
-  }
-
-  /**
-   * Remove boat.
-   *
-   * @param member the member
-   */
-  public void removeBoat(Member member) {
-    member.removeBoat(chooseBoat(member));
-  }
 
   // ----------------------------------Member section----------------------------
 
