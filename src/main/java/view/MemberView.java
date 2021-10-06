@@ -110,4 +110,61 @@ public class MemberView {
   public void printNoEditMessage() {
     System.out.println("Press enter if no change.");
   }
+
+
+  /**
+   * Print boat.
+   *
+   * @param boatName   the name
+   * @param boatType   the type
+   * @param boatLength the length
+   */
+  public void printBoat(String boatName, String boatType, Double boatLength) {
+    System.out.println("-Boat " + boatName + ", type: " + boatType + " and with a length of " + boatLength + "ft.");
+  }
+
+  /**
+   * Ask boat name string.
+   *
+   * @return the string
+   */
+  public String askBoatName() {
+    System.out.println("Please enter boat name: ");
+    String boatName = scan.nextLine();
+    if (!boatName.equals("")) {
+      return boatName;
+    }
+    return null;
+  }
+
+  /**
+   * Ask boat length double.
+   *
+   * @return the double
+   */
+  public Double askBoatLength() {
+    System.out.println("Please enter boat length in ft: ");
+    String input = scan.nextLine().replace(',', '.');
+    if (!input.equals("")) {
+      return Double.parseDouble(input);
+    }
+
+    return null;
+  }
+
+  /**
+   * Ask boat type boat type.
+   *
+   * @param boatTypes the boat types
+   * @return the boat type
+   */
+  public String askBoatType() {
+    System.out.println("Please choose a boat type: ");
+    String input = scan.nextLine();
+    if (!input.equals("")) {
+      return input;
+    }
+
+    return null;
+  }
 }
