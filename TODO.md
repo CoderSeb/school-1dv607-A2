@@ -24,6 +24,8 @@ Vad ska göras:
 - Final sequence + class diagram
 - Refactor (BIIIIIG)
 
+TEST AFTER MESS UP!
+
 
 ( Note: 
 - Check code for Information Expert and Creator
