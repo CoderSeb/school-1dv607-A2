@@ -6,7 +6,7 @@ package model;
 public class Boat {
   private String name;
   private Double length;
-  private String type;
+  private BoatType type;
 
   /**
    * Boat constructor.
@@ -15,10 +15,20 @@ public class Boat {
    * @param type   Boat type.
    * @param length boat length.
    */
-  public Boat(String name, BoatType type, Double length) {
+  public Boat(String name, String type, Double length) {
     this.name = name;
     this.length = length;
-    this.type = type.label;
+    this.type = convertBoatType(type);
+  }
+
+  private BoatType convertBoatType(String boatType) {
+    boatType = boatType.toUpperCase();
+    for (BoatType type : BoatType.values()) {
+      if (type.label.toUpperCase().equals(boatType)) {
+        return type;
+      }
+    }
+    return null;
   }
 
   /**
@@ -45,7 +55,7 @@ public class Boat {
    * @return as the boat type.
    */
   public String getType() {
-    return type;
+    return type.label;
   }
 
   /**
@@ -54,8 +64,8 @@ public class Boat {
    *
    * @param type as the boat type.
    */
-  public void setType(BoatType type) {
-    this.type = type.label;
+  public void setType(String type) {
+    this.type = convertBoatType(type);
   }
 
   /**
