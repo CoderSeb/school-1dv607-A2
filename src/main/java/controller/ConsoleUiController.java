@@ -3,6 +3,8 @@ package controller;
 import model.Boat;
 import model.Member;
 import view.ConsoleUi;
+import static view.ConsoleUi.MainOptions.ADD_MEMBER;
+import static view.ConsoleUi.MainOptions.SEARCH_MEMBER;
 
 /**
  * The type Console ui controller.
@@ -44,17 +46,19 @@ public class ConsoleUiController {
    * Show main menu.
    */
   private void showMainMenu() {
-    switch (view.printMainOption()) {
-      case (1):
+    ConsoleUi.MainOptions action;
+    action = view.printMainOptions();
+    switch (action) {
+      case ADD_MEMBER:
         regController.addMember(memController.createMember(regController.fetchMembersIds()));
         break;
-      case (2):
+      case SEARCH_MEMBER:
         showSearchMenu();
         break;
-      case (3):
+      case SHOW_VERBOSE:
         regController.showMembersVerbose();
         break;
-      case (4):
+      case SHOW_COMPACT:
         regController.showMembersCompact();
         break;
       default:

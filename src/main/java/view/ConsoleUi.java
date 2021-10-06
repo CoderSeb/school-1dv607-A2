@@ -15,13 +15,20 @@ public class ConsoleUi {
     this.scan = new Scanner(System.in);
   }
 
+  public enum MainOptions {
+    ADD_MEMBER,
+    SEARCH_MEMBER,
+    SHOW_VERBOSE,
+    SHOW_COMPACT,
+    QUIT;
+  }
 
   /**
    * Print main option integer.
    *
    * @return the integer
    */
-  public Integer printMainOption() {
+  public MainOptions printMainOptions() {
     System.out.println("");
     System.out.println("Please choose an option: ");
     System.out.println("1 - Add new member.");
@@ -33,7 +40,7 @@ public class ConsoleUi {
     System.out.println("4 - Show compact list of members.");
     System.out.println("0 - Quit.");
     // TODO: Add more options.
-    return parseStringToInt(scan.nextLine());
+    return getMainInput();
   }
 
   /**
@@ -44,6 +51,21 @@ public class ConsoleUi {
    */
   public Integer parseStringToInt(String input) {
     return Integer.parseInt(input);
+  }
+
+  public MainOptions getMainInput() {
+    switch(parseStringToInt(scan.nextLine())) {
+      case(1):
+        return MainOptions.ADD_MEMBER;
+      case(2):
+        return MainOptions.SEARCH_MEMBER;
+      case(3):
+        return MainOptions.SHOW_VERBOSE;
+      case(4):
+        return MainOptions.SHOW_COMPACT;
+      default:
+        return MainOptions.QUIT;
+    }
   }
 
   /**
