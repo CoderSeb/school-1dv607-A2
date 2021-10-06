@@ -1,7 +1,6 @@
 package view;
 
 import java.util.Scanner;
-import model.BoatType;
 
 /**
  * The type Register view.
@@ -110,53 +109,5 @@ public class RegisterView {
     System.out.println("Owned boats: ");
   }
 
-  /**
-   * Ask boat name string.
-   *
-   * @return the string
-   */
-  public String askBoatName() {
-    System.out.println("Please enter boat name: ");
-    String boatName = scan.nextLine();
-    if (!boatName.equals("")) {
-      return boatName;
-    }
-    return null;
-  }
 
-  /**
-   * Ask boat length double.
-   *
-   * @return the double
-   */
-  public Double askBoatLength() {
-    System.out.println("Please enter boat length in ft: ");
-    String input = scan.nextLine().replace(',', '.');
-    if (!input.equals("")) {
-      return Double.parseDouble(input);
-    }
-
-    return null;
-  }
-
-  /**
-   * Ask boat type boat type.
-   *
-   * @param boatTypes the boat types
-   * @return the boat type
-   */
-  public BoatType askBoatType(BoatType[] boatTypes) {
-    System.out.println("Please choose a boat type: ");
-    for (BoatType type : boatTypes) {
-      System.out.println(type.label);
-    }
-    String input = scan.nextLine();
-
-    for (BoatType type : boatTypes) {
-      if (type.label.equals(input)) {
-        return type;
-      }
-    }
-    return null;
-  }
 }
