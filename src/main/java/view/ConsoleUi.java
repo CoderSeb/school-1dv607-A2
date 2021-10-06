@@ -20,6 +20,11 @@ public class ConsoleUi {
     SEARCH_MEMBER,
     SHOW_VERBOSE,
     SHOW_COMPACT,
+    SEARCH_BY_PERSONALNR,
+    SEARCH_BY_ID,
+    EDIT_MEMBER,
+    REMOVE_MEMBER,
+    BOAT_MENU,
     QUIT;
   }
 
@@ -53,7 +58,7 @@ public class ConsoleUi {
     return Integer.parseInt(input);
   }
 
-  public MainOptions getMainInput() {
+  private MainOptions getMainInput() {
     switch(parseStringToInt(scan.nextLine())) {
       case(1):
         return MainOptions.ADD_MEMBER;
@@ -73,10 +78,21 @@ public class ConsoleUi {
    *
    * @return the integer
    */
-  public Integer printSearchOption() {
+  public MainOptions printSearchOptions() {
     System.out.println("1 - Search by personal number.");
     System.out.println("2 - Search by member id.");
-    return parseStringToInt(scan.nextLine());
+    return getSearchMenuInput();
+  }
+
+  private MainOptions getSearchMenuInput() {
+    switch(parseStringToInt(scan.nextLine())) {
+      case(1):
+        return MainOptions.SEARCH_BY_PERSONALNR;
+      case(2):
+        return MainOptions.SEARCH_BY_ID;
+      default:
+        return MainOptions.QUIT;
+    }
   }
 
   /**
@@ -121,13 +137,27 @@ public class ConsoleUi {
    *
    * @return the integer
    */
-  public Integer printMemberMenu() {
+  public MainOptions printMemberMenu() {
     System.out.println("");
     System.out.println("1 - Edit this member.");
     System.out.println("2 - Remove this member.");
     System.out.println("3 - Member boat menu.");
     System.out.println("0 - Go back.");
-    return parseStringToInt(scan.nextLine());
+    return getMemberMenuInput();
+  }
+
+
+  private MainOptions getMemberMenuInput() {
+    switch(parseStringToInt(scan.nextLine())) {
+      case(1):
+        return MainOptions.EDIT_MEMBER;
+      case(2):
+        return MainOptions.REMOVE_MEMBER;
+      case(3):
+        return MainOptions.BOAT_MENU;
+      default:
+        return MainOptions.QUIT;
+    }
   }
 
 
