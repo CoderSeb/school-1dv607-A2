@@ -20,7 +20,6 @@ public class Register {
    *
    * @return the members
    */
-//Iterable
   public ArrayList<Member> getMembers() {
     return members;
   }

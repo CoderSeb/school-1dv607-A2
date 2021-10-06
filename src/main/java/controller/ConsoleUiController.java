@@ -3,8 +3,6 @@ package controller;
 import model.Boat;
 import model.Member;
 import view.ConsoleUi;
-import static view.ConsoleUi.MainOptions.ADD_MEMBER;
-import static view.ConsoleUi.MainOptions.SEARCH_MEMBER;
 
 /**
  * The type Console ui controller.
@@ -16,6 +14,7 @@ public class ConsoleUiController {
   private Boolean quit;
   private Member currentMember;
   private ConsoleUi.MainOptions action;
+
   /**
    * Instantiates a new Console ui controller.
    *
@@ -94,11 +93,12 @@ public class ConsoleUiController {
    * Show member menu.
    */
   private void showMemberMenu() {
-    action = view.printMemberMenu();
     regController.showMemberVerbose(currentMember);
+    action = view.printMemberMenu();
     switch (view.printMemberMenu()) {
       case EDIT_MEMBER:
         memController.editMember(currentMember);
+        showMemberMenu();
         break;
       case REMOVE_MEMBER:
         regController.removeMember(currentMember);
@@ -116,19 +116,20 @@ public class ConsoleUiController {
    */
   private void showBoatMenu() {
     memController.showBoats(currentMember);
-    switch (view.printBoatOption()) {
-      case (1):
+    action = view.printBoatOptions();
+    switch (action) {
+      case ADD_BOAT:
         memController.registerBoat(currentMember);
         showBoatMenu();
         break;
-      case (2):
+      case EDIT_BOAT:
         Boat foundBoat = memController.chooseBoat(currentMember);
         if (foundBoat != null) {
           memController.editBoat(foundBoat);
         }
         showBoatMenu();
         break;
-      case (3):
+      case REMOVE_BOAT:
         memController.removeBoat(currentMember);
         showBoatMenu();
         break;
@@ -137,5 +138,4 @@ public class ConsoleUiController {
         break;
     }
   }
-
 }
