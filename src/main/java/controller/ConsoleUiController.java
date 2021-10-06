@@ -13,6 +13,7 @@ public class ConsoleUiController {
   private MemberController memController;
   private Boolean quit;
   private Member currentMember;
+  private ConsoleUi.MainOptions action;
 
   /**
    * Instantiates a new Console ui controller.
@@ -44,17 +45,18 @@ public class ConsoleUiController {
    * Show main menu.
    */
   private void showMainMenu() {
-    switch (view.printMainOption()) {
-      case (1):
+    action = view.printMainOptions();
+    switch (action) {
+      case ADD_MEMBER:
         regController.addMember(memController.createMember(regController.fetchMembersIds()));
         break;
-      case (2):
+      case SEARCH_MEMBER:
         showSearchMenu();
         break;
-      case (3):
+      case SHOW_VERBOSE:
         regController.showMembersVerbose();
         break;
-      case (4):
+      case SHOW_COMPACT:
         regController.showMembersCompact();
         break;
       default:
@@ -68,14 +70,15 @@ public class ConsoleUiController {
    * Show search menu.
    */
   private void showSearchMenu() {
-    switch (view.printSearchOption()) {
-      case (1):
+    action = view.printSearchOptions();
+    switch (action) {
+      case SEARCH_BY_PERSONALNR:
         currentMember = regController.searchMemberByPersonalNr();
         if (currentMember != null) {
           showMemberMenu();
         }
         break;
-      case (2):
+      case SEARCH_BY_ID:
         currentMember = regController.searchMemberById();
         if (currentMember != null) {
           showMemberMenu();
@@ -91,14 +94,16 @@ public class ConsoleUiController {
    */
   private void showMemberMenu() {
     regController.showMemberVerbose(currentMember);
+    action = view.printMemberMenu();
     switch (view.printMemberMenu()) {
-      case (1):
+      case EDIT_MEMBER:
         memController.editMember(currentMember);
+        showMemberMenu();
         break;
-      case (2):
+      case REMOVE_MEMBER:
         regController.removeMember(currentMember);
         break;
-      case (3):
+      case BOAT_MENU:
         showBoatMenu();
         break;
       default:
@@ -111,19 +116,20 @@ public class ConsoleUiController {
    */
   private void showBoatMenu() {
     memController.showBoats(currentMember);
-    switch (view.printBoatOption()) {
-      case (1):
+    action = view.printBoatOptions();
+    switch (action) {
+      case ADD_BOAT:
         memController.registerBoat(currentMember);
         showBoatMenu();
         break;
-      case (2):
+      case EDIT_BOAT:
         Boat foundBoat = memController.chooseBoat(currentMember);
         if (foundBoat != null) {
           memController.editBoat(foundBoat);
         }
         showBoatMenu();
         break;
-      case (3):
+      case REMOVE_BOAT:
         memController.removeBoat(currentMember);
         showBoatMenu();
         break;
@@ -132,5 +138,4 @@ public class ConsoleUiController {
         break;
     }
   }
-
 }

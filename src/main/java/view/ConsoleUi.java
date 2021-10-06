@@ -15,13 +15,12 @@ public class ConsoleUi {
     this.scan = new Scanner(System.in);
   }
 
-
   /**
    * Print main option integer.
    *
    * @return the integer
    */
-  public Integer printMainOption() {
+  public MainOptions printMainOptions() {
     System.out.println("");
     System.out.println("Please choose an option: ");
     System.out.println("1 - Add new member.");
@@ -33,7 +32,7 @@ public class ConsoleUi {
     System.out.println("4 - Show compact list of members.");
     System.out.println("0 - Quit.");
     // TODO: Add more options.
-    return parseStringToInt(scan.nextLine());
+    return getMainInput();
   }
 
   /**
@@ -46,15 +45,41 @@ public class ConsoleUi {
     return Integer.parseInt(input);
   }
 
+  private MainOptions getMainInput() {
+    switch (parseStringToInt(scan.nextLine())) {
+      case (1):
+        return MainOptions.ADD_MEMBER;
+      case (2):
+        return MainOptions.SEARCH_MEMBER;
+      case (3):
+        return MainOptions.SHOW_VERBOSE;
+      case (4):
+        return MainOptions.SHOW_COMPACT;
+      default:
+        return MainOptions.QUIT;
+    }
+  }
+
   /**
    * Print search option integer.
    *
    * @return the integer
    */
-  public Integer printSearchOption() {
+  public MainOptions printSearchOptions() {
     System.out.println("1 - Search by personal number.");
     System.out.println("2 - Search by member id.");
-    return parseStringToInt(scan.nextLine());
+    return getSearchMenuInput();
+  }
+
+  private MainOptions getSearchMenuInput() {
+    switch (parseStringToInt(scan.nextLine())) {
+      case (1):
+        return MainOptions.SEARCH_BY_PERSONALNR;
+      case (2):
+        return MainOptions.SEARCH_BY_ID;
+      default:
+        return MainOptions.QUIT;
+    }
   }
 
   /**
@@ -68,60 +93,58 @@ public class ConsoleUi {
   }
 
   /**
-   * Ask edit member boolean.
-   *
-   * @return the boolean
-   */
-  public Boolean askEditMember() {
-    System.out.println("Edit this member?");
-    return askYesOrNo();
-  }
-
-  /**
-   * Ask delete member boolean.
-   *
-   * @return the boolean
-   */
-  public Boolean askDeleteMember() {
-    System.out.println("Delete this member?");
-    return askYesOrNo();
-  }
-
-  /**
-   * Print success.
-   */
-  public void printSuccess() {
-    System.out.println("Task completed.");
-  }
-
-  /**
    * Print member menu integer.
    *
    * @return the integer
    */
-  public Integer printMemberMenu() {
+  public MainOptions printMemberMenu() {
     System.out.println("");
     System.out.println("1 - Edit this member.");
     System.out.println("2 - Remove this member.");
     System.out.println("3 - Member boat menu.");
     System.out.println("0 - Go back.");
-    return parseStringToInt(scan.nextLine());
+    return getMemberMenuInput();
   }
 
+  private MainOptions getMemberMenuInput() {
+    switch (parseStringToInt(scan.nextLine())) {
+      case (1):
+        return MainOptions.EDIT_MEMBER;
+      case (2):
+        return MainOptions.REMOVE_MEMBER;
+      case (3):
+        return MainOptions.BOAT_MENU;
+      default:
+        return MainOptions.QUIT;
+    }
+  }
 
   /**
    * Print boat option integer.
    *
    * @return the integer
    */
-  public Integer printBoatOption() {
+  public MainOptions printBoatOptions() {
     System.out.println("");
     System.out.println("Boat menu: ");
     System.out.println("1 - Add a boat");
     System.out.println("2 - Edit a boat");
     System.out.println("3 - Remove a boat");
     System.out.println("0 - Go back.");
-    return parseStringToInt(scan.nextLine());
+    return getBoatMenuInput();
+  }
+
+  private MainOptions getBoatMenuInput() {
+    switch (parseStringToInt(scan.nextLine())) {
+      case (1):
+        return MainOptions.ADD_BOAT;
+      case (2):
+        return MainOptions.EDIT_BOAT;
+      case (3):
+        return MainOptions.REMOVE_BOAT;
+      default:
+        return MainOptions.QUIT;
+    }
   }
 
   /**
@@ -136,16 +159,29 @@ public class ConsoleUi {
   }
 
   /**
-   * Consume left overs.
-   */
-  public void consumeLeftOvers() {
-    scan.nextLine();
-  }
-
-  /**
    * Close scanner.
    */
   public void closeScanner() {
     scan.close();
+  }
+
+
+  /**
+   * The enum Main options.
+   */
+  public enum MainOptions {
+    ADD_MEMBER,
+    SEARCH_MEMBER,
+    SHOW_VERBOSE,
+    SHOW_COMPACT,
+    SEARCH_BY_PERSONALNR,
+    SEARCH_BY_ID,
+    EDIT_MEMBER,
+    REMOVE_MEMBER,
+    BOAT_MENU,
+    ADD_BOAT,
+    EDIT_BOAT,
+    REMOVE_BOAT,
+    QUIT;
   }
 }
