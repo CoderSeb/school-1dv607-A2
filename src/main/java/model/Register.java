@@ -20,6 +20,7 @@ public class Register {
    *
    * @return the members
    */
+//Iterable
   public ArrayList<Member> getMembers() {
     return members;
   }
@@ -87,7 +88,7 @@ public class Register {
    */
   public Member findByPersonalNr(String personalNr) {
     for (Member member : this.members) {
-      if (member.getPersonalNr().getPersonalNumber().equals(personalNr)) {
+      if (member.getPersonalNr().equals(personalNr)) {
         return member;
       }
     }
