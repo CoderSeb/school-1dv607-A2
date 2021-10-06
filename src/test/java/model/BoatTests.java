@@ -10,7 +10,7 @@ class BoatTests {
 
   @BeforeEach
   void setUp() {
-    boat = new Boat("TestBoat", BoatType.MOTORSAILER, 10.5);
+    boat = new Boat("TestBoat", "Motorsailer", 10.5);
   }
 
   @Test
@@ -41,7 +41,7 @@ class BoatTests {
   @Test
   @DisplayName("Boat type setter should work.")
   void testBoatTypeSetter() {
-    boat.setType(BoatType.SAILBOAT);
+    boat.setType("Sailboat");
     assertTrue(boat.getType().equals("Sailboat"));
   }
 
