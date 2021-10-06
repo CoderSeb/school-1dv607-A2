@@ -11,7 +11,6 @@ public class ConsoleUiController {
   private ConsoleUi view;
   private RegisterController regController;
   private MemberController memController;
-  private BoatListController boatController;
   private Boolean quit;
   private Member currentMember;
 
@@ -21,14 +20,11 @@ public class ConsoleUiController {
    * @param view             the view
    * @param regController    the reg controller
    * @param memberController the member controller
-   * @param boatController   the boat controller
    */
-  public ConsoleUiController(ConsoleUi view, RegisterController regController, MemberController memberController,
-                             BoatListController boatController) {
+  public ConsoleUiController(ConsoleUi view, RegisterController regController, MemberController memberController) {
     this.view = view;
     this.regController = regController;
     this.memController = memberController;
-    this.boatController = boatController;
     this.quit = false;
     this.currentMember = null;
   }
@@ -114,21 +110,21 @@ public class ConsoleUiController {
    * Show boat menu.
    */
   private void showBoatMenu() {
-    boatController.showBoats(currentMember.getBoatList());
+    memController.showBoats(currentMember);
     switch (view.printBoatOption()) {
       case (1):
-        regController.registerBoat(currentMember);
+        memController.registerBoat(currentMember);
         showBoatMenu();
         break;
       case (2):
-        Boat foundBoat = regController.chooseBoat(currentMember);
+        Boat foundBoat = memController.chooseBoat(currentMember);
         if (foundBoat != null) {
-          regController.editBoat(foundBoat);
+          memController.editBoat(foundBoat);
         }
         showBoatMenu();
         break;
       case (3):
-        regController.removeBoat(currentMember);
+        memController.removeBoat(currentMember);
         showBoatMenu();
         break;
       default:

@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import model.Boat;
 import model.Member;
 import view.MemberView;
 
@@ -9,18 +10,15 @@ import view.MemberView;
  */
 public class MemberController {
   private MemberView view;
-  private BoatListController boatListController;
 
 
   /**
    * Instantiates a new Member controller.
    *
-   * @param view               the view
-   * @param boatListController the boat list controller
+   * @param view the view
    */
-  public MemberController(MemberView view, BoatListController boatListController) {
+  public MemberController(MemberView view) {
     this.view = view;
-    this.boatListController = boatListController;
   }
 
   /**
@@ -62,13 +60,67 @@ public class MemberController {
   }
 
   /**
-   * Show boat list.
+   * Show boats.
    *
    * @param member the member
    */
-  public void showBoatList(Member member) {
-    boatListController.showBoats(member.getBoatList());
+  public void showBoats(Member member) {
+    for (Boat boat : member.getBoatList()) {
+      view.printBoat(boat.getName(), boat.getType(), boat.getLength());
+    }
   }
 
+  /**
+   * Register boat.
+   *
+   * @param member the member
+   */
+  public void registerBoat(Member member) {
+    String name = view.askBoatName();
+    String type = view.askBoatType();
+    Double length = view.askBoatLength();
+    Boat newBoat = new Boat(name, type, length);
+    member.addBoat(newBoat);
+  }
 
+  /**
+   * Edit boat.
+   *
+   * @param boat the boat
+   */
+  public void editBoat(Boat boat) {
+    String boatName = view.askBoatName();
+    String boatType = view.askBoatType();
+    Double boatLength = view.askBoatLength();
+
+    if (boatName != null) {
+      boat.setName(boatName);
+    }
+    if (boatType != null) {
+      boat.setType(boatType);
+    }
+    if (boatLength != null) {
+      boat.setLength(boatLength);
+    }
+  }
+
+  /**
+   * Choose boat boat.
+   *
+   * @param member the member
+   * @return the boat
+   */
+  public Boat chooseBoat(Member member) {
+    String boatName = view.askBoatName();
+    return member.findBoatByName(boatName);
+  }
+
+  /**
+   * Remove boat.
+   *
+   * @param member the member
+   */
+  public void removeBoat(Member member) {
+    member.removeBoat(chooseBoat(member));
+  }
 }
