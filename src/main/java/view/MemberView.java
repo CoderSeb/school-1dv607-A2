@@ -155,7 +155,6 @@ public class MemberView {
   /**
    * Ask boat type boat type.
    *
-   * @param boatTypes the boat types
    * @return the boat type
    */
   public String askBoatType() {

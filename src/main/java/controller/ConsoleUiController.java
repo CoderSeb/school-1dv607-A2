@@ -46,7 +46,7 @@ public class ConsoleUiController {
   private void showMainMenu() {
     switch (view.printMainOption()) {
       case (1):
-        regController.addMember(memController.createMember(regController.fetchMembersIds()));
+        regController.addMember(memController.createMember(regController.createUniqueId()));
         break;
       case (2):
         showSearchMenu();
