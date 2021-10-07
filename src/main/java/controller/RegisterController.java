@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-import mock.MockData;
 import model.Member;
 import model.Register;
 import view.RegisterView;
@@ -119,27 +118,11 @@ public class RegisterController {
     }
   }
 
-  // ----------------------------------Boat section----------------------------
-
-
-  // ----------------------------------Member section----------------------------
-
-  /**
-   * Add mock data to register.
-   */
-  public void loadFromMock() {
-    MockData mockData = new MockData();
-    for (Member member : mockData.loadMembers()) {
-      model.addMember(member);
-    }
-  }
-
   /**
    * Create unique id string.
    *
    * @return the string
    */
-  // ----------------------------------Id section----------------------------
   public String createUniqueId() {
 
     return model.generateUniqueId();

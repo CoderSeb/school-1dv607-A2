@@ -34,7 +34,6 @@ public class ConsoleUiController {
    * Run.
    */
   public void run() {
-    regController.loadFromMock(); // TODO: Remove before production!!!
     view.printWelcomeMessage();
     do {
       showMainMenu();
