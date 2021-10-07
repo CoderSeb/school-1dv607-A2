@@ -46,10 +46,20 @@ public class MemberController {
   }
 
 
+  /**
+   * Prompt first name string.
+   *
+   * @return the string
+   */
   public String promptFirstName() {
     return view.askFirstName();
   }
 
+  /**
+   * Prompt last name string.
+   *
+   * @return the string
+   */
   public String promptLastName() {
     return view.askLastName();
   }

@@ -46,8 +46,6 @@ public class RegisterController {
 
   /**
    * Create and add member.
-   *
-   * @return the member
    */
   public void createAndAddMember() {
     String firstName = memController.promptFirstName();
