@@ -44,9 +44,9 @@ public class MemberView {
   }
 
   /**
-   * Ask personal nr long.
+   * Ask personal nr string.
    *
-   * @return the long
+   * @return the string
    */
   public String askPersonalNr() {
     System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
@@ -115,9 +115,9 @@ public class MemberView {
   /**
    * Print boat.
    *
-   * @param boatName   the name
-   * @param boatType   the type
-   * @param boatLength the length
+   * @param boatName   the boat name
+   * @param boatType   the boat type
+   * @param boatLength the boat length
    */
   public void printBoat(String boatName, String boatType, Double boatLength) {
     System.out.println("-Boat " + boatName + ", type: " + boatType + " and with a length of " + boatLength + "ft.");
@@ -156,7 +156,7 @@ public class MemberView {
   /**
    * Ask boat type string.
    *
-   * @return the boatType label.
+   * @return the string
    */
   public String askBoatType() {
     System.out.println("Please choose a boat type: ");

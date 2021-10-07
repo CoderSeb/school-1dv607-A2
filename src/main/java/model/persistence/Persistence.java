@@ -1,5 +1,6 @@
 package model.persistence;
 
+import error.InvalidInputException;
 import java.util.ArrayList;
 import model.Member;
 
@@ -12,7 +13,8 @@ public interface Persistence {
    * Load data array list.
    *
    * @return the array list
+   * @throws InvalidInputException the invalid input exception
    */
-  public ArrayList<Member> loadData();
+  public ArrayList<Member> loadData() throws InvalidInputException;
   // public void saveData();
 }

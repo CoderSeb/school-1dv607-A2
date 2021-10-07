@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Boat Class.
+ * The type Boat.
  */
 public class Boat {
   private String name;
@@ -9,11 +9,11 @@ public class Boat {
   private BoatType type;
 
   /**
-   * Boat constructor.
+   * Instantiates a new Boat.
    *
-   * @param name   name of the boat.
-   * @param type   Boat type.
-   * @param length boat length.
+   * @param name   the name
+   * @param type   the type
+   * @param length the length
    */
   public Boat(String name, String type, Double length) {
     this.name = name;
@@ -32,55 +32,54 @@ public class Boat {
   }
 
   /**
-   * Returns name of boat.
+   * Gets name.
    *
-   * @return the name.
+   * @return the name
    */
   public String getName() {
     return name;
   }
 
   /**
-   * Sets name of boat.
+   * Sets name.
    *
-   * @param name as the name.
+   * @param name the name
    */
   public void setName(String name) {
     this.name = name;
   }
 
   /**
-   * Return boat type as a string.
+   * Gets type.
    *
-   * @return as the boat type.
+   * @return the type
    */
   public String getType() {
     return type.label;
   }
 
   /**
-   * Sets the boat type as a string.
-   * BoatType.label is the string.
+   * Sets type.
    *
-   * @param type as the boat type.
+   * @param type the type
    */
   public void setType(String type) {
     this.type = convertBoatType(type);
   }
 
   /**
-   * Returns boat length.
+   * Gets length.
    *
-   * @return the boat length.
+   * @return the length
    */
   public Double getLength() {
     return length;
   }
 
   /**
-   * Sets length of boat.
+   * Sets length.
    *
-   * @param length as the length.
+   * @param length the length
    */
   public void setLength(Double length) {
     this.length = length;

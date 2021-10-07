@@ -1,5 +1,6 @@
 package model.persistence;
 
+import error.InvalidInputException;
 import java.util.ArrayList;
 import model.Boat;
 import model.Member;
@@ -20,11 +21,12 @@ public class MockData implements Persistence {
   }
 
   /**
-   * Loads mocked member data.
+   * Loads mocked data.
    *
-   * @return the mocked member data.
+   * @return a list with new mocked members.
+   * @throws InvalidInputException as Member creation validates it's values.
    */
-  public ArrayList<Member> loadData() {
+  public ArrayList<Member> loadData() throws InvalidInputException {
     Member goran = new Member("Göran", "Persson", "19510521-8734", "1X2Y3D");
     goran.addBoat(new Boat("Jolly Sailor", "Sailboat", 32.15));
     goran.addBoat(new Boat("Jolly Backup", "Sailboat", 29.0));

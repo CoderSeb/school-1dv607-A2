@@ -16,4 +16,14 @@ public class InvalidInputException extends Exception {
     super();
     this.message = "Invalid input!";
   }
+
+  /**
+   * Instantiates a new Invalid input exception.
+   *
+   * @param newMessage the new message
+   */
+  public InvalidInputException(String newMessage) {
+    super();
+    this.message = newMessage;
+  }
 }

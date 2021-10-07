@@ -45,9 +45,7 @@ public class ConsoleUiController {
     } while (!quit);
   }
 
-  /**
-   * Show main menu.
-   */
+
   private void showMainMenu() throws InvalidInputException {
     action = view.printMainOptions();
 
@@ -71,9 +69,7 @@ public class ConsoleUiController {
     }
   }
 
-  /**
-   * Show search menu.
-   */
+
   private void showSearchMenu() throws InvalidInputException {
     action = view.printSearchOptions();
     switch (action) {
@@ -94,13 +90,10 @@ public class ConsoleUiController {
     }
   }
 
-  /**
-   * Show member menu.
-   */
   private void showMemberMenu() throws InvalidInputException {
     regController.showMemberVerbose(currentMember);
     action = view.printMemberMenu();
-    switch (view.printMemberMenu()) {
+    switch (action) {
       case EDIT_MEMBER:
         memController.editMember(currentMember);
         showMemberMenu();
@@ -116,9 +109,7 @@ public class ConsoleUiController {
     }
   }
 
-  /**
-   * Show boat menu.
-   */
+
   private void showBoatMenu() throws InvalidInputException {
     memController.showBoats(currentMember);
     action = view.printBoatOptions();

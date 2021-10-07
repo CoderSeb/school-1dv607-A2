@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 /**
- * Class ConsoleUi.
+ * The type Console ui.
  */
 public class ConsoleUi {
   private Scanner scan;
@@ -39,10 +39,10 @@ public class ConsoleUi {
   }
 
   /**
-   * Parse string to integer.
+   * Parse string to int integer.
    *
-   * @param input the input.
-   * @return the input as integer.
+   * @param input the input
+   * @return the integer
    * @throws InvalidInputException the invalid input exception
    */
   public Integer parseStringToInt(String input) throws InvalidInputException {
@@ -83,9 +83,9 @@ public class ConsoleUi {
   }
 
   /**
-   * Print search option integer.
+   * Print search options main options.
    *
-   * @return the integer
+   * @return the main options
    * @throws InvalidInputException the invalid input exception
    */
   public MainOptions printSearchOptions() throws InvalidInputException {
@@ -116,9 +116,9 @@ public class ConsoleUi {
   }
 
   /**
-   * Print member menu integer.
+   * Print member menu main options.
    *
-   * @return the integer
+   * @return the main options
    * @throws InvalidInputException the invalid input exception
    */
   public MainOptions printMemberMenu() throws InvalidInputException {
@@ -144,9 +144,9 @@ public class ConsoleUi {
   }
 
   /**
-   * Print boat option integer.
+   * Print boat options main options.
    *
-   * @return the integer
+   * @return the main options
    * @throws InvalidInputException the invalid input exception
    */
   public MainOptions printBoatOptions() throws InvalidInputException {
