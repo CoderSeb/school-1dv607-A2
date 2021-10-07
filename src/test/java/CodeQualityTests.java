@@ -17,29 +17,86 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The type Code quality tests.
+ */
 public class CodeQualityTests {
+  /**
+   * The constant checkStyleXmlFile.
+   */
   final static String checkStyleXmlFile = "./build/reports/checkstyle/main.xml";
+  /**
+   * The constant findBugsXmlFile.
+   */
   final static String findBugsXmlFile = "./build/reports/spotbugs/spotbugs.xml";
+  /**
+   * The constant codeQualityJSONFile.
+   */
   final static String codeQualityJSONFile = "./build/reports/gl-code-quality-report.json";
+  /**
+   * The constant checkStyleJUnitFile.
+   */
   final static String checkStyleJUnitFile = "./build/test-results/TEST-checkstyle.xml";
+  /**
+   * The constant findBugsJUnitFile.
+   */
   final static String findBugsJUnitFile = "./build/test-results/TEST-findbugs.xml";
+  /**
+   * The constant maxQualityErrors.
+   */
   final static int maxQualityErrors = 50;
+  /**
+   * The constant srcRoot.
+   */
   final static String srcRoot = "src/main/java";  // set this accordingly
+  /**
+   * The constant buildRoot.
+   */
   final static String buildRoot = "build/classes/java/main";  // set this accordingly
 
+  /**
+   * The type Test case.
+   */
   static class TestCase {
+    /**
+     * The Name.
+     */
     String name;
+    /**
+     * The Class name.
+     */
     String className; // this is what gitlab presents as the suite column
+    /**
+     * The File name.
+     */
     String fileName;
+    /**
+     * The Failures.
+     */
     ArrayList<Failure> failures = new ArrayList<>();
   }
 
+  /**
+   * The type Failure.
+   */
   static class Failure {
+    /**
+     * The Message.
+     */
     String message = "";
+    /**
+     * The Type.
+     */
     String type = "";
+    /**
+     * The Text.
+     */
     String text = "";
   }
 
+  /**
+   * Code quality.
+   */
   @Test
   public void codeQuality() {
     int errors = 0;
@@ -48,6 +105,11 @@ public class CodeQualityTests {
     assertTrue(errors < maxQualityErrors, "Max amount (" + maxQualityErrors +") of quality issues exceeded:" + errors);
   }
 
+  /**
+   * Find bugs test int.
+   *
+   * @return the int
+   */
   public int findBugsTest() {
     DocumentBuilder dBuilder = null;
     int errors = 0;
@@ -199,6 +261,11 @@ public class CodeQualityTests {
     return item.getNodeName().equalsIgnoreCase("p") ? System.lineSeparator() + text + System.lineSeparator() : text;
   }
 
+  /**
+   * Check style test int.
+   *
+   * @return the int
+   */
   public int checkStyleTest() {
     ArrayList<TestCase> testCases = new ArrayList<>();
     int errors = 0;

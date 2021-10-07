@@ -1,5 +1,6 @@
 package controller;
 
+import error.InvalidInputException;
 import model.Boat;
 import model.Member;
 import view.ConsoleUi;
@@ -38,7 +39,7 @@ public class ConsoleUiController {
     do {
       try {
         showMainMenu();
-      }catch(InvalidInputException e) {
+      } catch (InvalidInputException e) {
         System.out.println(e.message);
       }
     } while (!quit);
@@ -47,7 +48,7 @@ public class ConsoleUiController {
   /**
    * Show main menu.
    */
-  private void showMainMenu() {
+  private void showMainMenu() throws InvalidInputException {
     action = view.printMainOptions();
 
     switch (action) {
@@ -73,7 +74,7 @@ public class ConsoleUiController {
   /**
    * Show search menu.
    */
-  private void showSearchMenu() {
+  private void showSearchMenu() throws InvalidInputException {
     action = view.printSearchOptions();
     switch (action) {
       case SEARCH_BY_PERSONALNR:
@@ -96,7 +97,7 @@ public class ConsoleUiController {
   /**
    * Show member menu.
    */
-  private void showMemberMenu() {
+  private void showMemberMenu() throws InvalidInputException {
     regController.showMemberVerbose(currentMember);
     action = view.printMemberMenu();
     switch (view.printMemberMenu()) {
@@ -118,7 +119,7 @@ public class ConsoleUiController {
   /**
    * Show boat menu.
    */
-  private void showBoatMenu() {
+  private void showBoatMenu() throws InvalidInputException {
     memController.showBoats(currentMember);
     action = view.printBoatOptions();
     switch (action) {

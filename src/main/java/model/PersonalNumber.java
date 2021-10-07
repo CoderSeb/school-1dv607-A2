@@ -39,11 +39,13 @@ public class PersonalNumber {
   /**
    * Personal number is valid boolean.
    *
+   * @param newPersonalNumber the new personal number
    * @return the boolean
    */
   public String personalNumberIsValid(String newPersonalNumber) {
     // Regex source: https://github.com/personnummer/java/blob/master/src/main/java/dev/personnummer/Personnummer.java
-    Pattern regex = Pattern.compile("^(\\d{2})?(\\d{2})([-|+]?)?(\\d{2})([-|+]?)?(\\d{2})([-|+]?)?((?!000)\\d{3})(\\d?)$");
+    Pattern regex = Pattern.compile(
+        "^(\\d{2})?(\\d{2})([-|+]?)?(\\d{2})([-|+]?)?(\\d{2})([-|+]?)?((?!000)\\d{3})(\\d?)$");
     Matcher matcher = regex.matcher(newPersonalNumber);
     Boolean matchFound = matcher.find();
     if (matchFound == true) {

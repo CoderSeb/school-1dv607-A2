@@ -1,6 +1,8 @@
 package view;
 
+import error.InvalidInputException;
 import java.util.Scanner;
+
 
 /**
  * Class ConsoleUi.
@@ -20,8 +22,9 @@ public class ConsoleUi {
    * Print main options main options.
    *
    * @return the main options
+   * @throws InvalidInputException the invalid input exception
    */
-  public MainOptions printMainOptions() {
+  public MainOptions printMainOptions() throws InvalidInputException {
     System.out.println("");
     System.out.println("Please choose an option: ");
     System.out.println("1 - Add new member.");
@@ -40,41 +43,58 @@ public class ConsoleUi {
    *
    * @param input the input.
    * @return the input as integer.
+   * @throws InvalidInputException the invalid input exception
    */
-  public Integer parseStringToInt(String input) {
-    if (input.equals("") || input == null) {
-     throw new InvalidInputException();
+  public Integer parseStringToInt(String input) throws InvalidInputException {
+    if (!canBeParsed(input)) {
+      throw new InvalidInputException();
     }
     return Integer.parseInt(input);
   }
 
-  private MainOptions getMainInput() {
-      switch (parseStringToInt(scan.nextLine())) {
-        case (1):
-          return MainOptions.ADD_MEMBER;
-        case (2):
-          return MainOptions.SEARCH_MEMBER;
-        case (3):
-          return MainOptions.SHOW_VERBOSE;
-        case (4):
-          return MainOptions.SHOW_COMPACT;
-        default:
-          return MainOptions.QUIT;
-      }
+  /**
+   * Can be parsed boolean.
+   *
+   * @param input the input
+   * @return the boolean
+   */
+  public boolean canBeParsed(String input) {
+    try {
+      Integer.parseInt(input);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
+  }
+
+  private MainOptions getMainInput() throws InvalidInputException {
+    switch (parseStringToInt(scan.nextLine())) {
+      case (1):
+        return MainOptions.ADD_MEMBER;
+      case (2):
+        return MainOptions.SEARCH_MEMBER;
+      case (3):
+        return MainOptions.SHOW_VERBOSE;
+      case (4):
+        return MainOptions.SHOW_COMPACT;
+      default:
+        return MainOptions.QUIT;
+    }
   }
 
   /**
    * Print search option integer.
    *
    * @return the integer
+   * @throws InvalidInputException the invalid input exception
    */
-  public MainOptions printSearchOptions() {
+  public MainOptions printSearchOptions() throws InvalidInputException {
     System.out.println("1 - Search by personal number.");
     System.out.println("2 - Search by member id.");
     return getSearchMenuInput();
   }
 
-  private MainOptions getSearchMenuInput() {
+  private MainOptions getSearchMenuInput() throws InvalidInputException {
     switch (parseStringToInt(scan.nextLine())) {
       case (1):
         return MainOptions.SEARCH_BY_PERSONALNR;
@@ -99,8 +119,9 @@ public class ConsoleUi {
    * Print member menu integer.
    *
    * @return the integer
+   * @throws InvalidInputException the invalid input exception
    */
-  public MainOptions printMemberMenu() {
+  public MainOptions printMemberMenu() throws InvalidInputException {
     System.out.println("");
     System.out.println("1 - Edit this member.");
     System.out.println("2 - Remove this member.");
@@ -109,7 +130,7 @@ public class ConsoleUi {
     return getMemberMenuInput();
   }
 
-  private MainOptions getMemberMenuInput() {
+  private MainOptions getMemberMenuInput() throws InvalidInputException {
     switch (parseStringToInt(scan.nextLine())) {
       case (1):
         return MainOptions.EDIT_MEMBER;
@@ -126,8 +147,9 @@ public class ConsoleUi {
    * Print boat option integer.
    *
    * @return the integer
+   * @throws InvalidInputException the invalid input exception
    */
-  public MainOptions printBoatOptions() {
+  public MainOptions printBoatOptions() throws InvalidInputException {
     System.out.println("");
     System.out.println("Boat menu: ");
     System.out.println("1 - Add a boat");
@@ -137,7 +159,7 @@ public class ConsoleUi {
     return getBoatMenuInput();
   }
 
-  private MainOptions getBoatMenuInput() {
+  private MainOptions getBoatMenuInput() throws InvalidInputException {
     switch (parseStringToInt(scan.nextLine())) {
       case (1):
         return MainOptions.ADD_BOAT;
