@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 /**
@@ -98,8 +100,9 @@ public class Member {
    *
    * @return the boat list
    */
-  public ArrayList<Boat> getBoatList() {
-    return boatList;
+  public List<Boat> getBoatList() {
+    List<Boat> readOnlyBoats = Collections.unmodifiableList(boatList);
+    return readOnlyBoats;
   }
 
   /**
