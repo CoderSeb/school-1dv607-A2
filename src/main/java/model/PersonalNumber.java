@@ -7,9 +7,7 @@ import java.util.regex.Pattern;
  * The type Personal number.
  */
 public class PersonalNumber {
-
   private String personalNumber;
-  private Boolean isValid;
 
   /**
    * Instantiates a new Personal number.
@@ -17,17 +15,7 @@ public class PersonalNumber {
    * @param newPersonalNumber the new personal number
    */
   public PersonalNumber(String newPersonalNumber) {
-    this.personalNumber = newPersonalNumber;
-    this.isValid = personalNumberIsValid();
-  }
-
-  /**
-   * Gets valid.
-   *
-   * @return the valid
-   */
-  public Boolean getValid() {
-    return isValid;
+    this.personalNumber = personalNumberIsValid(newPersonalNumber);
   }
 
   /**
@@ -46,7 +34,6 @@ public class PersonalNumber {
    */
   public void setPersonalNumber(String newPersonalNumber) {
     personalNumber = newPersonalNumber;
-    isValid = personalNumberIsValid();
   }
 
   /**
@@ -54,11 +41,14 @@ public class PersonalNumber {
    *
    * @return the boolean
    */
-  public Boolean personalNumberIsValid() {
+  public String personalNumberIsValid(String newPersonalNumber) {
     // Regex source: https://github.com/personnummer/java/blob/master/src/main/java/dev/personnummer/Personnummer.java
-    Pattern regex = Pattern.compile("^(\\d{2})?(\\d{2})(\\d{2})(\\d{2})([-|+]?)?((?!000)\\d{3})(\\d?)$");
-    Matcher matcher = regex.matcher(personalNumber);
+    Pattern regex = Pattern.compile("^(\\d{2})?(\\d{2})([-|+]?)?(\\d{2})([-|+]?)?(\\d{2})([-|+]?)?((?!000)\\d{3})(\\d?)$");
+    Matcher matcher = regex.matcher(newPersonalNumber);
     Boolean matchFound = matcher.find();
-    return matchFound;
+    if (matchFound == true) {
+      return newPersonalNumber;
+    }
+    return null;
   }
 }

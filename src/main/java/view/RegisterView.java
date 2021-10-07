@@ -100,6 +100,4 @@ public class RegisterView {
   public void printBoatSection() {
     System.out.println("Owned boats: ");
   }
-
-
 }

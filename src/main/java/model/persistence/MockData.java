@@ -25,7 +25,7 @@ public class MockData implements Persistence {
    * @return the mocked member data.
    */
   public ArrayList<Member> loadData() {
-    Member goran = new Member("Göran", "Persson", "1951-05-21-8734", "1X2Y3D");
+    Member goran = new Member("Göran", "Persson", "19510521-8734", "1X2Y3D");
     goran.addBoat(new Boat("Jolly Sailor", "Sailboat", 32.15));
     goran.addBoat(new Boat("Jolly Backup", "Sailboat", 29.0));
     names.add(goran);
