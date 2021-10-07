@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import model.persistence.MockData;
 
 /**
  * The type Register.
@@ -15,7 +16,7 @@ public class Register {
    * Instantiates a new Register.
    */
   public Register() {
-    this.members = new ArrayList<Member>();
+    this.members = new MockData().loadData();
   }
 
   /**
