@@ -170,18 +170,57 @@ public class ConsoleUi {
    * The enum Main options.
    */
   public enum MainOptions {
+    /**
+     * Add member main options.
+     */
     ADD_MEMBER,
+    /**
+     * Search member main options.
+     */
     SEARCH_MEMBER,
+    /**
+     * Show verbose main options.
+     */
     SHOW_VERBOSE,
+    /**
+     * Show compact main options.
+     */
     SHOW_COMPACT,
+    /**
+     * Search by personalnr main options.
+     */
     SEARCH_BY_PERSONALNR,
+    /**
+     * Search by id main options.
+     */
     SEARCH_BY_ID,
+    /**
+     * Edit member main options.
+     */
     EDIT_MEMBER,
+    /**
+     * Remove member main options.
+     */
     REMOVE_MEMBER,
+    /**
+     * Boat menu main options.
+     */
     BOAT_MENU,
+    /**
+     * Add boat main options.
+     */
     ADD_BOAT,
+    /**
+     * Edit boat main options.
+     */
     EDIT_BOAT,
+    /**
+     * Remove boat main options.
+     */
     REMOVE_BOAT,
+    /**
+     * Quit main options.
+     */
     QUIT;
   }
 }
