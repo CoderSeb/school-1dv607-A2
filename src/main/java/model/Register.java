@@ -21,10 +21,6 @@ public class Register {
    *
    * @return the members
    */
-<<<<<<< HEAD
-=======
-  //Iterable
->>>>>>> martin_memberId
   public ArrayList<Member> getMembers() {
     return members;
   }

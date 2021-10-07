@@ -15,10 +15,11 @@ public class ConsoleUi {
     this.scan = new Scanner(System.in);
   }
 
+
   /**
-   * Print main option integer.
+   * Print main options main options.
    *
-   * @return the integer
+   * @return the main options
    */
   public MainOptions printMainOptions() {
     System.out.println("");
@@ -31,15 +32,14 @@ public class ConsoleUi {
     System.out.println("3 - Show verbose list of members.");
     System.out.println("4 - Show compact list of members.");
     System.out.println("0 - Quit.");
-    // TODO: Add more options.
     return getMainInput();
   }
 
   /**
-   * Parse string to int integer.
+   * Parse string to integer.
    *
-   * @param input the input
-   * @return the integer
+   * @param input the input.
+   * @return the input as integer.
    */
   public Integer parseStringToInt(String input) {
     return Integer.parseInt(input);

@@ -45,16 +45,11 @@ public class ConsoleUiController {
    * Show main menu.
    */
   private void showMainMenu() {
-<<<<<<< HEAD
-    action = view.printMainOptions();
-    switch (action) {
-      case ADD_MEMBER:
-        regController.addMember(memController.createMember(regController.fetchMembersIds()));
-=======
-    switch (view.printMainOption()) {
-      case (1):
+        action = view.printMainOptions();
+
+        switch (action) {
+          case ADD_MEMBER:
         regController.addMember(memController.createMember(regController.createUniqueId()));
->>>>>>> martin_memberId
         break;
       case SEARCH_MEMBER:
         showSearchMenu();
