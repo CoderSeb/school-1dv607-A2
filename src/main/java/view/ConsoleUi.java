@@ -42,22 +42,25 @@ public class ConsoleUi {
    * @return the input as integer.
    */
   public Integer parseStringToInt(String input) {
+    if (input.equals("") || input == null) {
+     throw new InvalidInputException();
+    }
     return Integer.parseInt(input);
   }
 
   private MainOptions getMainInput() {
-    switch (parseStringToInt(scan.nextLine())) {
-      case (1):
-        return MainOptions.ADD_MEMBER;
-      case (2):
-        return MainOptions.SEARCH_MEMBER;
-      case (3):
-        return MainOptions.SHOW_VERBOSE;
-      case (4):
-        return MainOptions.SHOW_COMPACT;
-      default:
-        return MainOptions.QUIT;
-    }
+      switch (parseStringToInt(scan.nextLine())) {
+        case (1):
+          return MainOptions.ADD_MEMBER;
+        case (2):
+          return MainOptions.SEARCH_MEMBER;
+        case (3):
+          return MainOptions.SHOW_VERBOSE;
+        case (4):
+          return MainOptions.SHOW_COMPACT;
+        default:
+          return MainOptions.QUIT;
+      }
   }
 
   /**

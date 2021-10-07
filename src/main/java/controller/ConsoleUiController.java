@@ -36,7 +36,11 @@ public class ConsoleUiController {
   public void run() {
     view.printWelcomeMessage();
     do {
-      showMainMenu();
+      try {
+        showMainMenu();
+      }catch(InvalidInputException e) {
+        System.out.println(e.message);
+      }
     } while (!quit);
   }
 

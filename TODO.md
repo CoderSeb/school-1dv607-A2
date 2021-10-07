@@ -12,18 +12,18 @@ Vad funkar:
 - Remove Boat, BaotList and Member model dependancy from ConsoleUiController
 - Enums för menyval!!! (Sebastian).
 - Flytta memenerId till register (Martin)
-- Iterables för getMember och getBoatlist (Elena).
-- Prepare for persistance (Elena).
+- Iterables för getMember och getBoatlist (Elena)
+- Prepare for persistance (Elena)
+- Check that controller is active and view is passive
+- Refactor (BIIIIIG)
 
 
 Vad ska göras:
-
 - Felhantering
-- Check that controller is active and view is passive
 - (Write our own automatic tests)
 - Update class diagram
 - Final sequence + class diagram
-- Refactor (BIIIIIG)
+
 
 TEST AFTER MESS UP!
 
