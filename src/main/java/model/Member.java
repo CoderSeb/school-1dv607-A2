@@ -1,9 +1,7 @@
 package model;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 
 /**
  * The type Member.
@@ -30,7 +28,6 @@ public class Member {
     this.memberId = memberId;
     this.boatList = new ArrayList<Boat>();
   }
-
 
   /**
    * Gets first name.

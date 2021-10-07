@@ -18,7 +18,6 @@ Vad funkar:
 
 
 Vad ska göras:
-
 - Felhantering
 - (Write our own automatic tests)
 - Final sequence + class diagram
