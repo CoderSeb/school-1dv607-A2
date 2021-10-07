@@ -1,4 +1,4 @@
-package mock;
+package model.persistance;
 
 import java.util.ArrayList;
 import model.Boat;
@@ -8,7 +8,7 @@ import model.Register;
 /**
  * The type Mock data.
  */
-public class MockData {
+public class MockData implements Persistence {
   private Register register;
   private ArrayList<Member> names;
 
@@ -17,19 +17,14 @@ public class MockData {
    */
   public MockData() {
     this.names = new ArrayList<Member>();
-    loadMockedData();
   }
 
   /**
-   * Load members array list.
+   * Loads mocked member data.
    *
-   * @return the array list
+   * @return the mocked member data.
    */
-  public ArrayList<Member> loadMembers() {
-    return names;
-  }
-
-  private void loadMockedData() {
+  public ArrayList<Member> loadData() {
     Member goran = new Member("Göran", "Persson", "1951-05-21-8734", "1X2Y3D");
     goran.addBoat(new Boat("Jolly Sailor", "Sailboat", 32.15));
     goran.addBoat(new Boat("Jolly Backup", "Sailboat", 29.0));
@@ -43,6 +38,8 @@ public class MockData {
     Member vanessa = new Member("Vanessa", "Samuelsson", "1989-08-21-9103", "8G1B5H");
 
     names.add(vanessa);
+
+    return names;
   }
 
 }
