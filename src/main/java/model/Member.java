@@ -16,34 +16,20 @@ public class Member {
   /**
    * Instantiates a new Member.
    *
-   * @param firstName    the first name
-   * @param lastName     the last name
-   * @param personalNr   the personal nr
-   * @param allMemberIds the all member ids
+   * @param firstName  the first name
+   * @param lastName   the last name
+   * @param personalNr the personal nr
+   * @param memberId   the member id
    */
-  public Member(String firstName, String lastName, String personalNr, ArrayList<String> allMemberIds) {
+  public Member(String firstName, String lastName, String personalNr, String memberId) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.personalNr = new PersonalNumber(personalNr);
-    this.memberId = new MemberId(allMemberIds).getId();
+    this.memberId = memberId;
     this.boatList = new ArrayList<Boat>();
   }
 
-  /**
-   * Instantiates a new Member.
-   *
-   * @param mockedFirstName  the mocked first name
-   * @param mockedLastName   the mocked last name
-   * @param mockedPersonalNr the mocked personal nr
-   * @param mockedMemberId   the mocked member id
-   */
-  public Member(String mockedFirstName, String mockedLastName, String mockedPersonalNr, String mockedMemberId) {
-    this.firstName = mockedFirstName;
-    this.lastName = mockedLastName;
-    this.personalNr = new PersonalNumber(mockedPersonalNr);
-    this.memberId = mockedMemberId;
-    this.boatList = new ArrayList<Boat>();
-  }
+
 
   /**
    * Gets first name.
