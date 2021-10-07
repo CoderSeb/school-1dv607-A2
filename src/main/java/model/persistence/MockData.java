@@ -1,4 +1,4 @@
-package model.persistance;
+package model.persistence;
 
 import java.util.ArrayList;
 import model.Boat;
