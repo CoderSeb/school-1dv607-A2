@@ -17,14 +17,6 @@ public class RegisterView {
 
 
   /**
-   * Print no edit message.
-   */
-  public void printNoEditMessage() {
-    System.out.println("Press enter if no change.");
-  }
-
-
-  /**
    * Print no member found.
    */
   public void printNoMemberFound() {
@@ -108,6 +100,4 @@ public class RegisterView {
   public void printBoatSection() {
     System.out.println("Owned boats: ");
   }
-
-
 }

@@ -52,7 +52,7 @@ public class ConsoleUiController {
 
     switch (action) {
       case ADD_MEMBER:
-        regController.addMember(memController.createMember(regController.createUniqueId()));
+        regController.createAndAddMember();
         break;
       case SEARCH_MEMBER:
         showSearchMenu();

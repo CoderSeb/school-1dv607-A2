@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
 import model.Member;
 import model.Register;
 import view.RegisterView;
@@ -44,13 +43,16 @@ public class RegisterController {
     model.addMember(member);
   }
 
+
   /**
-   * Fetch members ids array list.
-   *
-   * @return the array list
+   * Create and add member.
    */
-  public ArrayList<String> fetchMembersIds() {
-    return model.getAllMemberIds();
+  public void createAndAddMember() {
+    String firstName = memController.promptFirstName();
+    String lastName = memController.promptLastName();
+    String personalNr = view.askPersonalNr();
+    Member newMember = new Member(firstName, lastName, personalNr, createUniqueId());
+    addMember(newMember);
   }
 
   /**
@@ -124,7 +126,6 @@ public class RegisterController {
    * @return the string
    */
   public String createUniqueId() {
-
     return model.generateUniqueId();
   }
 }

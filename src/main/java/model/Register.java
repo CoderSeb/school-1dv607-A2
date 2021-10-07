@@ -56,18 +56,6 @@ public class Register {
     this.members.remove(member);
   }
 
-  /**
-   * Gets all member ids.
-   *
-   * @return the all member ids
-   */
-  public ArrayList<String> getAllMemberIds() {
-    ArrayList<String> result = new ArrayList<String>();
-    for (Member member : members) {
-      result.add(member.getMemberId());
-    }
-    return result;
-  }
 
   /**
    * Find by id member.
@@ -129,8 +117,8 @@ public class Register {
   }
 
   private Boolean isUnique(String newId) {
-    for (String memberId : getAllMemberIds()) {
-      if (memberId.equals(newId)) {
+    for (Member member : members) {
+      if (member.getMemberId().equals(newId)) {
         return false;
       }
     }
