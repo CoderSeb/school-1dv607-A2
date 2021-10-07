@@ -11,24 +11,15 @@ Vad funkar:
 - Remove Boat and PersonalNumber Models from RegisterController dependencies
 - Remove Boat, BaotList and Member model dependancy from ConsoleUiController
 - Enums för menyval!!! (Sebastian).
-- Flytta memenerId till register (Martin)
+- Flytta memenerId till register (Martin).
 - Iterables för getMember och getBoatlist (Elena).
 - Prepare for persistance (Elena).
+- Check that controller is active and view is passive
 
 
 Vad ska göras:
 
 - Felhantering
-- Check that controller is active and view is passive
 - (Write our own automatic tests)
-- Update class diagram
 - Final sequence + class diagram
-- Refactor (BIIIIIG)
 
-TEST AFTER MESS UP!
-
-
-( Note: 
-- Check code for Information Expert and Creator
-~~- Observer pattern~~
-- )

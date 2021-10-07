@@ -20,19 +20,6 @@ public class MemberController {
     this.view = view;
   }
 
-  /**
-   * Create and add member.
-   *
-   * @param memberId the member id
-   * @return the member
-   */
-  public Member createMember(String memberId) {
-    String firstName = view.askFirstName();
-    String lastName = view.askLastName();
-    String personalNr = view.askPersonalNr();
-    Member newMember = new Member(firstName, lastName, personalNr, memberId);
-    return newMember;
-  }
 
   /**
    * Edit member.
@@ -56,6 +43,15 @@ public class MemberController {
     if (personalNr != null) {
       member.setPersonalNr(personalNr);
     }
+  }
+
+
+  public String promptFirstName() {
+    return view.askFirstName();
+  }
+
+  public String promptLastName() {
+    return view.askLastName();
   }
 
   /**
