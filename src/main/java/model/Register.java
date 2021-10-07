@@ -1,5 +1,6 @@
 package model;
 
+import error.InvalidInputException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,8 +15,10 @@ public class Register {
 
   /**
    * Instantiates a new Register.
+   *
+   * @throws InvalidInputException the invalid input exception
    */
-  public Register() {
+  public Register() throws InvalidInputException {
     this.members = new MockData().loadData();
   }
 

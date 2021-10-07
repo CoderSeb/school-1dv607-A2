@@ -1,8 +1,10 @@
 package model;
 
+import error.InvalidInputException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 /**
  * The type Member.
@@ -21,8 +23,9 @@ public class Member {
    * @param lastName   the last name
    * @param personalNr the personal nr
    * @param memberId   the member id
+   * @throws InvalidInputException the invalid input exception
    */
-  public Member(String firstName, String lastName, String personalNr, String memberId) {
+  public Member(String firstName, String lastName, String personalNr, String memberId) throws InvalidInputException {
     this.firstName = firstName;
     this.lastName = lastName;
     this.personalNr = new PersonalNumber(personalNr);

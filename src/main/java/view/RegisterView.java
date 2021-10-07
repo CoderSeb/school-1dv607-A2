@@ -1,5 +1,6 @@
 package view;
 
+import error.InvalidInputException;
 import java.util.Scanner;
 
 /**
@@ -27,34 +28,60 @@ public class RegisterView {
    * Ask member id string.
    *
    * @return the string
+   * @throws InvalidInputException the invalid input exception
    */
-  public String askMemberId() {
+  public String askMemberId() throws InvalidInputException {
     System.out.println("Please enter member id:");
-    return scan.nextLine();
+    return validateInput(scan.nextLine());
   }
 
   /**
-   * Ask personal nr long.
+   * Ask personal nr string.
    *
-   * @return the long
+   * @return the string
+   * @throws InvalidInputException the invalid input exception
    */
-  public String askPersonalNr() {
+  public String askPersonalNr() throws InvalidInputException {
     System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
-    String input = scan.nextLine();
-    if (isBlank(input)) {
-      return null;
-    }
-    return input;
+    return validateInput(scan.nextLine());
   }
 
   /**
-   * Is blank boolean.
+   * Ask first name string.
+   *
+   * @return the string
+   * @throws InvalidInputException the invalid input exception
+   */
+  public String askFirstName() throws InvalidInputException {
+    System.out.println("Please enter first name: ");
+    return validateInput(scan.nextLine());
+  }
+
+
+  /**
+   * Ask last name string.
+   *
+   * @return the string
+   * @throws InvalidInputException the invalid input exception
+   */
+  public String askLastName() throws InvalidInputException {
+    System.out.println("Please enter last name: ");
+    return validateInput(scan.nextLine());
+  }
+
+
+  /**
+   * Validate input string.
    *
    * @param input the input
-   * @return the boolean
+   * @return the string
+   * @throws InvalidInputException the invalid input exception
    */
-  public Boolean isBlank(String input) {
-    return input.equals("");
+  public String validateInput(String input) throws InvalidInputException {
+    if (input.trim().equals("")) {
+      throw new InvalidInputException();
+    }
+    return input;
   }
 
   /**

@@ -1,5 +1,6 @@
 package controller;
 
+import error.InvalidInputException;
 import model.Member;
 import model.Register;
 import view.RegisterView;
@@ -46,10 +47,12 @@ public class RegisterController {
 
   /**
    * Create and add member.
+   *
+   * @throws InvalidInputException the invalid input exception
    */
-  public void createAndAddMember() {
-    String firstName = memController.promptFirstName();
-    String lastName = memController.promptLastName();
+  public void createAndAddMember() throws InvalidInputException {
+    String firstName = view.askFirstName();
+    String lastName = view.askLastName();
     String personalNr = view.askPersonalNr();
     Member newMember = new Member(firstName, lastName, personalNr, createUniqueId());
     addMember(newMember);
@@ -59,8 +62,9 @@ public class RegisterController {
    * Search member by id member.
    *
    * @return the member
+   * @throws InvalidInputException the invalid input exception
    */
-  public Member searchMemberById() {
+  public Member searchMemberById() throws InvalidInputException {
     String memberId = view.askMemberId();
     if (memberId != null) {
       Member foundMember = model.findById(memberId);
@@ -76,8 +80,9 @@ public class RegisterController {
    * Search member by personal nr member.
    *
    * @return the member
+   * @throws InvalidInputException the invalid input exception
    */
-  public Member searchMemberByPersonalNr() {
+  public Member searchMemberByPersonalNr() throws InvalidInputException {
     String personalNr = view.askPersonalNr();
     if (personalNr != null) {
       Member foundMember = model.findByPersonalNr(personalNr);
