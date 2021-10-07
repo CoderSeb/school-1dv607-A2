@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -21,8 +23,9 @@ public class Register {
    *
    * @return the members
    */
-  public ArrayList<Member> getMembers() {
-    return members;
+  public List<Member> getMembers() {
+    List<Member> readOnlyMembers = Collections.unmodifiableList(members);
+    return readOnlyMembers;
   }
 
   /**

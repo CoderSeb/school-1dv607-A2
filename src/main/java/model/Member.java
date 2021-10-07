@@ -30,7 +30,6 @@ public class Member {
   }
 
 
-
   /**
    * Gets first name.
    *
