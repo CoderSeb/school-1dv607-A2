@@ -1,6 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 /**
  * The type Register.
@@ -20,9 +23,9 @@ public class Register {
    *
    * @return the members
    */
-//Iterable
-  public ArrayList<Member> getMembers() {
-    return members;
+  public List<Member> getMembers() {
+    List<Member> readOnlyMembers = Collections.unmodifiableList(members);
+    return readOnlyMembers;
   }
 
   /**
@@ -93,5 +96,43 @@ public class Register {
       }
     }
     return null;
+  }
+  //---------------generate Id section--------------
+
+
+  /**
+   * Generate unique id string.
+   *
+   * @return the string
+   */
+  public String generateUniqueId() {
+    String newId;
+    do {
+      newId = generateId();
+    } while (!isUnique(newId));
+    return newId;
+  }
+
+  private String generateId() {
+    Random random = new Random();
+    int maxLength = 6;
+    String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    String result = "";
+
+    for (int i = 0; i < maxLength / 2; i++) {
+      char randChar = alphabet.charAt(random.nextInt(alphabet.length()));
+      result += randChar;
+      result += String.valueOf(random.nextInt(10));
+    }
+    return result;
+  }
+
+  private Boolean isUnique(String newId) {
+    for (String memberId : getAllMemberIds()) {
+      if (memberId.equals(newId)) {
+        return false;
+      }
+    }
+    return true;
   }
 }

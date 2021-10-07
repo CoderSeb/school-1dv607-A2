@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
 import model.Boat;
 import model.Member;
 import view.MemberView;
@@ -24,14 +23,14 @@ public class MemberController {
   /**
    * Create and add member.
    *
-   * @param memberIds the member ids
+   * @param memberId the member id
    * @return the member
    */
-  public Member createMember(ArrayList<String> memberIds) {
+  public Member createMember(String memberId) {
     String firstName = view.askFirstName();
     String lastName = view.askLastName();
     String personalNr = view.askPersonalNr();
-    Member newMember = new Member(firstName, lastName, personalNr, memberIds);
+    Member newMember = new Member(firstName, lastName, personalNr, memberId);
     return newMember;
   }
 

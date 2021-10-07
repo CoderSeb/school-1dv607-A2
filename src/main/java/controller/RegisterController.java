@@ -133,4 +133,15 @@ public class RegisterController {
       model.addMember(member);
     }
   }
+
+  /**
+   * Create unique id string.
+   *
+   * @return the string
+   */
+  // ----------------------------------Id section----------------------------
+  public String createUniqueId() {
+
+    return model.generateUniqueId();
+  }
 }

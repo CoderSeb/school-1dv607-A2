@@ -152,11 +152,16 @@ public class MemberView {
     return null;
   }
 
+
   /**
-   * Ask boat type boat type.
+   * Ask boat type string.
+   * <p>
+   * <<<<<<< HEAD
    *
-   * @param boatTypes the boat types
+   * @return the string
+   * =======
    * @return the boat type
+   * >>>>>>> martin_memberId
    */
   public String askBoatType() {
     System.out.println("Please choose a boat type: ");
