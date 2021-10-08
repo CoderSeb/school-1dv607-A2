@@ -82,8 +82,9 @@ public class Member {
    * Sets personal nr.
    *
    * @param personalNr the personal nr
+   * @throws InvalidInputException the invalid input exception
    */
-  public void setPersonalNr(String personalNr) {
+  public void setPersonalNr(String personalNr) throws InvalidInputException {
     this.personalNr.setPersonalNumber(personalNr);
   }
 

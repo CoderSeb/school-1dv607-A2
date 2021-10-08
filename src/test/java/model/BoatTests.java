@@ -1,5 +1,6 @@
 package model;
 
+import error.InvalidInputException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ class BoatTests {
    * Sets up.
    */
   @BeforeEach
-  void setUp() {
+  void setUp() throws InvalidInputException {
     boat = new Boat("TestBoat", "Motorsailer", 10.5);
   }
 
@@ -64,7 +65,7 @@ class BoatTests {
    */
   @Test
   @DisplayName("Boat type setter should work.")
-  void testBoatTypeSetter() {
+  void testBoatTypeSetter() throws InvalidInputException {
     boat.setType("Sailboat");
     assertTrue(boat.getType().equals("Sailboat"));
   }

@@ -1,5 +1,7 @@
 package model;
 
+import error.InvalidInputException;
+
 /**
  * The type Boat.
  */
@@ -14,11 +16,19 @@ public class Boat {
    * @param name   the name
    * @param type   the type
    * @param length the length
+   * @throws InvalidInputException the invalid input exception
    */
-  public Boat(String name, String type, Double length) {
+  public Boat(String name, String type, Double length) throws InvalidInputException {
     this.name = name;
     this.length = length;
-    this.type = convertBoatType(type);
+    this.type = validateBoatType(convertBoatType(type));
+  }
+
+  private BoatType validateBoatType(BoatType boatType) throws InvalidInputException {
+    if (boatType == null) {
+      throw new InvalidInputException("Boat type is not valid.");
+    }
+    return boatType;
   }
 
   private BoatType convertBoatType(String boatType) {
@@ -62,9 +72,10 @@ public class Boat {
    * Sets type.
    *
    * @param type the type
+   * @throws InvalidInputException the invalid input exception
    */
-  public void setType(String type) {
-    this.type = convertBoatType(type);
+  public void setType(String type) throws InvalidInputException {
+    this.type = validateBoatType(convertBoatType(type));
   }
 
   /**

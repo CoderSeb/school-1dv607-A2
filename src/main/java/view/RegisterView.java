@@ -77,7 +77,7 @@ public class RegisterView {
    * @return the string
    * @throws InvalidInputException the invalid input exception
    */
-  public String validateInput(String input) throws InvalidInputException {
+  private String validateInput(String input) throws InvalidInputException {
     if (input.trim().equals("")) {
       throw new InvalidInputException();
     }
@@ -117,7 +117,7 @@ public class RegisterView {
   /**
    * Print line.
    */
-  public void printLine() {
+  private void printLine() {
     System.out.println("----------------------------------");
   }
 

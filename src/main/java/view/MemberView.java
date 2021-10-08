@@ -1,5 +1,6 @@
 package view;
 
+import error.InvalidInputException;
 import java.util.Scanner;
 
 /**
@@ -20,7 +21,7 @@ public class MemberView {
    *
    * @return the string
    */
-  public String askFirstName() {
+  public String askEditFirstName() {
     System.out.println("Please enter first name: ");
     String input = scan.nextLine();
     if (isBlank(input)) {
@@ -34,7 +35,7 @@ public class MemberView {
    *
    * @return the string
    */
-  public String askLastName() {
+  public String askEditLastName() {
     System.out.println("Please enter last name: ");
     String input = scan.nextLine();
     if (isBlank(input)) {
@@ -48,7 +49,7 @@ public class MemberView {
    *
    * @return the string
    */
-  public String askPersonalNr() {
+  public String askEditPersonalNr() {
     System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
     String input = scan.nextLine();
     if (isBlank(input)) {
@@ -63,7 +64,7 @@ public class MemberView {
    * @param input the input
    * @return the boolean
    */
-  public Boolean isBlank(String input) {
+  private Boolean isBlank(String input) {
     return input.equals("");
   }
 
@@ -100,7 +101,7 @@ public class MemberView {
   /**
    * Print line.
    */
-  public void printLine() {
+  private void printLine() {
     System.out.println("----------------------------------");
   }
 
@@ -123,6 +124,7 @@ public class MemberView {
     System.out.println("-Boat " + boatName + ", type: " + boatType + " and with a length of " + boatLength + "ft.");
   }
 
+
   /**
    * Ask boat name string.
    *
@@ -137,16 +139,39 @@ public class MemberView {
     return null;
   }
 
+  private Double parseStringToDouble(String input) throws InvalidInputException {
+    if (!canBeParsed(input)) {
+      throw new InvalidInputException();
+    }
+    return Double.parseDouble(input);
+  }
+
+  /**
+   * Can be parsed boolean.
+   *
+   * @param input the input
+   * @return the boolean
+   */
+  private boolean canBeParsed(String input) {
+    try {
+      Double.parseDouble(input);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
+  }
+
   /**
    * Ask boat length double.
    *
    * @return the double
+   * @throws InvalidInputException the invalid input exception
    */
-  public Double askBoatLength() {
+  public Double askBoatLength() throws InvalidInputException {
     System.out.println("Please enter boat length in ft: ");
     String input = scan.nextLine().replace(',', '.');
     if (!input.equals("")) {
-      return Double.parseDouble(input);
+      return parseStringToDouble(input);
     }
 
     return null;

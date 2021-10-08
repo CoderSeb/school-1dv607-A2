@@ -40,7 +40,7 @@ public class RegisterController {
    *
    * @param member the member
    */
-  public void addMember(Member member) {
+  private void addMember(Member member) {
     model.addMember(member);
   }
 

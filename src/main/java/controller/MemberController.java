@@ -1,5 +1,7 @@
 package controller;
 
+import error.InvalidInputException;
+import java.util.Arrays;
 import model.Boat;
 import model.Member;
 import view.MemberView;
@@ -25,14 +27,15 @@ public class MemberController {
    * Edit member.
    *
    * @param member the member
+   * @throws InvalidInputException the invalid input exception
    */
-  public void editMember(Member member) {
+  public void editMember(Member member) throws InvalidInputException {
     view.printNoEditMessage();
-    String firstName = view.askFirstName();
+    String firstName = view.askEditFirstName();
     view.printNoEditMessage();
-    String lastName = view.askLastName();
+    String lastName = view.askEditLastName();
     view.printNoEditMessage();
-    String personalNr = view.askPersonalNr();
+    String personalNr = view.askEditPersonalNr();
 
     if (firstName != null) {
       member.setFirstName(firstName);
@@ -43,25 +46,6 @@ public class MemberController {
     if (personalNr != null) {
       member.setPersonalNr(personalNr);
     }
-  }
-
-
-  /**
-   * Prompt first name string.
-   *
-   * @return the string
-   */
-  public String promptFirstName() {
-    return view.askFirstName();
-  }
-
-  /**
-   * Prompt last name string.
-   *
-   * @return the string
-   */
-  public String promptLastName() {
-    return view.askLastName();
   }
 
   /**
@@ -79,11 +63,19 @@ public class MemberController {
    * Register boat.
    *
    * @param member the member
+   * @throws InvalidInputException the invalid input exception
    */
-  public void registerBoat(Member member) {
+  public void registerBoat(Member member) throws InvalidInputException {
     String name = view.askBoatName();
     String type = view.askBoatType();
     Double length = view.askBoatLength();
+    String[] boatValues = {name, type};
+    if (Arrays.stream(boatValues).anyMatch(value -> value == null)) {
+      throw new InvalidInputException("You must enter a value.");
+    }
+    if (length == null) {
+      throw new InvalidInputException("You must enter a value.");
+    }
     Boat newBoat = new Boat(name, type, length);
     member.addBoat(newBoat);
   }
@@ -92,8 +84,9 @@ public class MemberController {
    * Edit boat.
    *
    * @param boat the boat
+   * @throws InvalidInputException the invalid input exception
    */
-  public void editBoat(Boat boat) {
+  public void editBoat(Boat boat) throws InvalidInputException {
     String boatName = view.askBoatName();
     String boatType = view.askBoatType();
     Double boatLength = view.askBoatLength();

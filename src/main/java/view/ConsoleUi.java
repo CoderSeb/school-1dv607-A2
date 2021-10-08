@@ -45,7 +45,7 @@ public class ConsoleUi {
    * @return the integer
    * @throws InvalidInputException the invalid input exception
    */
-  public Integer parseStringToInt(String input) throws InvalidInputException {
+  private Integer parseStringToInt(String input) throws InvalidInputException {
     if (!canBeParsed(input)) {
       throw new InvalidInputException();
     }
@@ -58,7 +58,7 @@ public class ConsoleUi {
    * @param input the input
    * @return the boolean
    */
-  public boolean canBeParsed(String input) {
+  private boolean canBeParsed(String input) {
     try {
       Integer.parseInt(input);
       return true;
@@ -103,16 +103,6 @@ public class ConsoleUi {
       default:
         return MainOptions.QUIT;
     }
-  }
-
-  /**
-   * Ask yes or no boolean.
-   *
-   * @return the boolean
-   */
-  public Boolean askYesOrNo() {
-    System.out.println("Y/(N)?");
-    return scan.nextLine().equals("Y");
   }
 
   /**

@@ -34,9 +34,10 @@ public class PersonalNumber {
    * Sets personal number.
    *
    * @param newPersonalNumber the new personal number
+   * @throws InvalidInputException the invalid input exception
    */
-  public void setPersonalNumber(String newPersonalNumber) {
-    personalNumber = newPersonalNumber;
+  public void setPersonalNumber(String newPersonalNumber) throws InvalidInputException {
+    personalNumber = personalNumberIsValid(newPersonalNumber);
   }
 
   /**
@@ -46,7 +47,7 @@ public class PersonalNumber {
    * @return the string
    * @throws InvalidInputException the invalid input exception
    */
-  public String personalNumberIsValid(String newPersonalNumber) throws InvalidInputException {
+  private String personalNumberIsValid(String newPersonalNumber) throws InvalidInputException {
     // Regex source: https://github.com/personnummer/java/blob/master/src/main/java/dev/personnummer/Personnummer.java
     Pattern regex = Pattern.compile(
         "^(\\d{2})?(\\d{2})([-|+]?)?(\\d{2})([-|+]?)?(\\d{2})([-|+]?)?((?!000)\\d{3})(\\d?)$");
