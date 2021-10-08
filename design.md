@@ -14,8 +14,10 @@ The application uses the model-view-controller (MVC) architectural pattern. The 
 
 Please provide at least one class diagram according to the assignment requirments.
 
-![class diagram so far](img/class-diagram.jpeg)
+![Final class diagram](img/class-diagram.jpeg)
 
 ### Sequence Diagram
 
 Please provide at least one sequence diagram according to the assignment requirments.
+
+![Final sequence diagram](img/sequence-diagram.jpeg)
