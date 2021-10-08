@@ -4,13 +4,11 @@ import error.InvalidInputException;
 import java.util.ArrayList;
 import model.Boat;
 import model.Member;
-import model.Register;
 
 /**
  * The type Mock data.
  */
 public class MockData implements Persistence {
-  private Register register;
   private ArrayList<Member> names;
 
   /**
@@ -43,5 +41,4 @@ public class MockData implements Persistence {
 
     return names;
   }
-
 }

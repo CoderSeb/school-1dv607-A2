@@ -24,6 +24,13 @@ public class Boat {
     this.type = validateBoatType(convertBoatType(type));
   }
 
+  /**
+   * Returns the BoatType if it's valid.
+   *
+   * @param boatType as the BoatType.
+   * @return BoatType, or null.
+   * @throws InvalidInputException as the input exception.
+   */
   private BoatType validateBoatType(BoatType boatType) throws InvalidInputException {
     if (boatType == null) {
       throw new InvalidInputException("Boat type is not valid.");
@@ -31,6 +38,12 @@ public class Boat {
     return boatType;
   }
 
+  /**
+   * Converts a string input to a BoatType enum literal.
+   *
+   * @param boatType as a String.
+   * @return the corresponding BoatType enum literal.
+   */
   private BoatType convertBoatType(String boatType) {
     boatType = boatType.toUpperCase();
     for (BoatType type : BoatType.values()) {

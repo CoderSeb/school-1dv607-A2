@@ -19,9 +19,9 @@ public class ConsoleUi {
 
 
   /**
-   * Print main options main options.
+   * Print main menu.
    *
-   * @return the main options
+   * @return MainOptions enum.
    * @throws InvalidInputException the invalid input exception
    */
   public MainOptions printMainOptions() throws InvalidInputException {
@@ -53,7 +53,7 @@ public class ConsoleUi {
   }
 
   /**
-   * Can be parsed boolean.
+   * Returns true if String input can be parsed to Integer.
    *
    * @param input the input
    * @return the boolean
@@ -67,6 +67,13 @@ public class ConsoleUi {
     }
   }
 
+
+  /**
+   * Returns Main menu input as MainOptions enum.
+   *
+   * @return MainOptions enum.
+   * @throws InvalidInputException as an invalid input exception.
+   */
   private MainOptions getMainInput() throws InvalidInputException {
     switch (parseStringToInt(scan.nextLine())) {
       case (1):
@@ -83,10 +90,10 @@ public class ConsoleUi {
   }
 
   /**
-   * Print search options main options.
+   * Prints search menu.
    *
-   * @return the main options
-   * @throws InvalidInputException the invalid input exception
+   * @return MainOptions enum.
+   * @throws InvalidInputException the invalid input exception.
    */
   public MainOptions printSearchOptions() throws InvalidInputException {
     System.out.println("1 - Search by personal number.");
@@ -94,6 +101,12 @@ public class ConsoleUi {
     return getSearchMenuInput();
   }
 
+  /**
+   * Returns Search menu input as MainOptions enum.
+   *
+   * @return MainOptions enum.
+   * @throws InvalidInputException the invalid input exception.
+   */
   private MainOptions getSearchMenuInput() throws InvalidInputException {
     switch (parseStringToInt(scan.nextLine())) {
       case (1):
@@ -106,10 +119,10 @@ public class ConsoleUi {
   }
 
   /**
-   * Print member menu main options.
+   * Print member menu.
    *
-   * @return the main options
-   * @throws InvalidInputException the invalid input exception
+   * @return MainOptions enum.
+   * @throws InvalidInputException the invalid input exception.
    */
   public MainOptions printMemberMenu() throws InvalidInputException {
     System.out.println("");
@@ -120,6 +133,12 @@ public class ConsoleUi {
     return getMemberMenuInput();
   }
 
+  /**
+   * Returns Member menu option as MainOptions enum.
+   *
+   * @return MainOptions enum.
+   * @throws InvalidInputException the invalid input exception.
+   */
   private MainOptions getMemberMenuInput() throws InvalidInputException {
     switch (parseStringToInt(scan.nextLine())) {
       case (1):
@@ -134,10 +153,10 @@ public class ConsoleUi {
   }
 
   /**
-   * Print boat options main options.
+   * Print boat menu.
    *
-   * @return the main options
-   * @throws InvalidInputException the invalid input exception
+   * @return MainOptions enum.
+   * @throws InvalidInputException the invalid input exception.
    */
   public MainOptions printBoatOptions() throws InvalidInputException {
     System.out.println("");
@@ -149,6 +168,13 @@ public class ConsoleUi {
     return getBoatMenuInput();
   }
 
+
+  /**
+   * Returns Boat menu option as MainOptions enum.
+   *
+   * @return MainOptions enum.
+   * @throws InvalidInputException the invalid input exception.
+   */
   private MainOptions getBoatMenuInput() throws InvalidInputException {
     switch (parseStringToInt(scan.nextLine())) {
       case (1):
@@ -185,57 +211,18 @@ public class ConsoleUi {
    * The enum Main options.
    */
   public enum MainOptions {
-    /**
-     * Add member main options.
-     */
     ADD_MEMBER,
-    /**
-     * Search member main options.
-     */
     SEARCH_MEMBER,
-    /**
-     * Show verbose main options.
-     */
     SHOW_VERBOSE,
-    /**
-     * Show compact main options.
-     */
     SHOW_COMPACT,
-    /**
-     * Search by personalnr main options.
-     */
     SEARCH_BY_PERSONALNR,
-    /**
-     * Search by id main options.
-     */
     SEARCH_BY_ID,
-    /**
-     * Edit member main options.
-     */
     EDIT_MEMBER,
-    /**
-     * Remove member main options.
-     */
     REMOVE_MEMBER,
-    /**
-     * Boat menu main options.
-     */
     BOAT_MENU,
-    /**
-     * Add boat main options.
-     */
     ADD_BOAT,
-    /**
-     * Edit boat main options.
-     */
     EDIT_BOAT,
-    /**
-     * Remove boat main options.
-     */
     REMOVE_BOAT,
-    /**
-     * Quit main options.
-     */
     QUIT;
   }
 }

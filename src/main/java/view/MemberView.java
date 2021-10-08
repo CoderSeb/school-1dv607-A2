@@ -17,9 +17,9 @@ public class MemberView {
   }
 
   /**
-   * Ask first name string.
+   * Prompts user to enter first name.
    *
-   * @return the string
+   * @return the input.
    */
   public String askEditFirstName() {
     System.out.println("Please enter first name: ");
@@ -31,9 +31,9 @@ public class MemberView {
   }
 
   /**
-   * Ask last name string.
+   * Prompts user to enter last name.
    *
-   * @return the string
+   * @return the input.
    */
   public String askEditLastName() {
     System.out.println("Please enter last name: ");
@@ -45,9 +45,9 @@ public class MemberView {
   }
 
   /**
-   * Ask personal nr string.
+   * Prompts user to enter personal number.
    *
-   * @return the string
+   * @return the input.
    */
   public String askEditPersonalNr() {
     System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
@@ -59,50 +59,13 @@ public class MemberView {
   }
 
   /**
-   * Is blank boolean.
+   * Returns true if input is blank.
    *
    * @param input the input
    * @return the boolean
    */
   private Boolean isBlank(String input) {
     return input.equals("");
-  }
-
-  /**
-   * Print member verbose.
-   *
-   * @param firstName  the first name
-   * @param lastName   the last name
-   * @param personalNr the personal nr
-   * @param memberId   the member id
-   */
-  public void printMemberVerbose(String firstName, String lastName, String personalNr, String memberId) {
-    printLine();
-    System.out.println("Member " + memberId);
-    System.out.println("Name: " + firstName + " " + lastName);
-    System.out.println("Personal number: " + personalNr);
-  }
-
-  /**
-   * Print member compact.
-   *
-   * @param firstName     the first name
-   * @param lastName      the last name
-   * @param memberId      the member id
-   * @param amountOfBoats the amount of boats
-   */
-  public void printMemberCompact(String firstName, String lastName, String memberId, Integer amountOfBoats) {
-    printLine();
-    System.out.println("Member " + memberId);
-    System.out.println("Name: " + firstName + " " + lastName);
-    System.out.println("Amount of boats: " + amountOfBoats);
-  }
-
-  /**
-   * Print line.
-   */
-  private void printLine() {
-    System.out.println("----------------------------------");
   }
 
   /**
@@ -126,9 +89,9 @@ public class MemberView {
 
 
   /**
-   * Ask boat name string.
+   * Prompts user to enter boat name.
    *
-   * @return the string
+   * @return the input.
    */
   public String askBoatName() {
     System.out.println("Please enter boat name: ");
@@ -139,6 +102,13 @@ public class MemberView {
     return null;
   }
 
+  /**
+   * Converts String input to a Double.
+   *
+   * @param input the input
+   * @return the Double.
+   * @throws InvalidInputException the invalid input exception.
+   */
   private Double parseStringToDouble(String input) throws InvalidInputException {
     if (!canBeParsed(input)) {
       throw new InvalidInputException();
@@ -147,7 +117,7 @@ public class MemberView {
   }
 
   /**
-   * Can be parsed boolean.
+   * Returns true if String input can be parsed to Double.
    *
    * @param input the input
    * @return the boolean
@@ -162,7 +132,7 @@ public class MemberView {
   }
 
   /**
-   * Ask boat length double.
+   * Prompts user to enter boat length.
    *
    * @return the double
    * @throws InvalidInputException the invalid input exception
@@ -177,11 +147,10 @@ public class MemberView {
     return null;
   }
 
-
   /**
-   * Ask boat type string.
+   * Prompts user to enter boat type.
    *
-   * @return the string
+   * @return the input.
    */
   public String askBoatType() {
     System.out.println("Please choose a boat type: ");

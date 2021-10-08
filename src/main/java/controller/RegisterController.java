@@ -59,7 +59,7 @@ public class RegisterController {
   }
 
   /**
-   * Search member by id member.
+   * Search member by id.
    *
    * @return the member
    * @throws InvalidInputException the invalid input exception
@@ -77,7 +77,7 @@ public class RegisterController {
   }
 
   /**
-   * Search member by personal nr member.
+   * Search member by personal nr.
    *
    * @return the member
    * @throws InvalidInputException the invalid input exception
@@ -107,7 +107,7 @@ public class RegisterController {
   }
 
   /**
-   * Show members verbose.
+   * Show all members verbose.
    */
   public void showMembersVerbose() {
     for (Member member : model.getMembers()) {
@@ -116,7 +116,7 @@ public class RegisterController {
   }
 
   /**
-   * Show members compact.
+   * Show all members compact.
    */
   public void showMembersCompact() {
     for (Member member : model.getMembers()) {

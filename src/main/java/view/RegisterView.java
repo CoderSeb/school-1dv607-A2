@@ -25,7 +25,7 @@ public class RegisterView {
   }
 
   /**
-   * Ask member id string.
+   * Prompts user to enter member id.
    *
    * @return the string
    * @throws InvalidInputException the invalid input exception
@@ -36,7 +36,7 @@ public class RegisterView {
   }
 
   /**
-   * Ask personal nr string.
+   * Prompts user to enter personal nr.
    *
    * @return the string
    * @throws InvalidInputException the invalid input exception
@@ -47,7 +47,7 @@ public class RegisterView {
   }
 
   /**
-   * Ask first name string.
+   * Prompts user to enter first name.
    *
    * @return the string
    * @throws InvalidInputException the invalid input exception
@@ -59,7 +59,7 @@ public class RegisterView {
 
 
   /**
-   * Ask last name string.
+   * Prompts user to enter last name.
    *
    * @return the string
    * @throws InvalidInputException the invalid input exception
@@ -71,10 +71,10 @@ public class RegisterView {
 
 
   /**
-   * Validate input string.
+   * Validates input, throws error if empty.
    *
-   * @param input the input
-   * @return the string
+   * @param input the string.
+   * @return the input.
    * @throws InvalidInputException the invalid input exception
    */
   private String validateInput(String input) throws InvalidInputException {

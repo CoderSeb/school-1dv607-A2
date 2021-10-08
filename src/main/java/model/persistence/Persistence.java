@@ -10,10 +10,10 @@ import model.Member;
 public interface Persistence {
 
   /**
-   * Load data array list.
+   * Load data and return loaded members in an ArrayList.
    *
-   * @return the array list
-   * @throws InvalidInputException the invalid input exception
+   * @return the array list with loaded members.
+   * @throws InvalidInputException the invalid input exception.
    */
   public ArrayList<Member> loadData() throws InvalidInputException;
   // public void saveData();

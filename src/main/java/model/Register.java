@@ -23,22 +23,13 @@ public class Register {
   }
 
   /**
-   * Gets members.
+   * Returns unmodifiable list of all members.
    *
-   * @return the members
+   * @return the members as an unmodifiable list.
    */
   public List<Member> getMembers() {
     List<Member> readOnlyMembers = Collections.unmodifiableList(members);
     return readOnlyMembers;
-  }
-
-  /**
-   * Sets members.
-   *
-   * @param members the members
-   */
-  public void setMembers(ArrayList<Member> members) {
-    this.members = members;
   }
 
   /**
@@ -61,10 +52,10 @@ public class Register {
 
 
   /**
-   * Find by id member.
+   * Find member by id member.
    *
-   * @param id the id
-   * @return the member
+   * @param id the id as a String.
+   * @return the member found.
    */
   public Member findById(String id) {
     for (Member member : this.members) {
@@ -76,10 +67,10 @@ public class Register {
   }
 
   /**
-   * Find by personal nr member.
+   * Find member by personal number.
    *
-   * @param personalNr the personal nr
-   * @return the member
+   * @param personalNr the personal nr as a String.
+   * @return the found member.
    */
   public Member findByPersonalNr(String personalNr) {
     for (Member member : this.members) {
@@ -89,8 +80,6 @@ public class Register {
     }
     return null;
   }
-  //---------------generate Id section--------------
-
 
   /**
    * Generate unique id string.
@@ -105,6 +94,11 @@ public class Register {
     return newId;
   }
 
+  /**
+   * Generates a random id string.
+   *
+   * @return the String.
+   */
   private String generateId() {
     Random random = new Random();
     int maxLength = 6;
@@ -119,6 +113,12 @@ public class Register {
     return result;
   }
 
+  /**
+   * Returns true if no member with the same id as the input is found.
+   *
+   * @param newId as a String.
+   * @return the Boolean.
+   */
   private Boolean isUnique(String newId) {
     for (Member member : members) {
       if (member.getMemberId().equals(newId)) {
