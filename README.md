@@ -16,3 +16,11 @@ A project template based on gradle and a gitlab pipeline. You should always buil
 Adhere to the git versioning instructions according to the assignment.
 
 Note that this assignment will be automatically checked for plagiarism of source code.
+
+
+## Usage instructions
+
+- Start the app by running main method of App.java
+- Navigate menu by entering numbers corresponding to given menu options.
+- The program should take you back to the previous menu if you press an option that doesn't exist.
+- The program will prompt when input is needed.
