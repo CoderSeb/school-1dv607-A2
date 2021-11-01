@@ -4,6 +4,7 @@ import error.InvalidInputException;
 import java.util.Arrays;
 import model.Boat;
 import model.Member;
+import model.PersonalNumber;
 import view.MemberView;
 
 /**
@@ -35,7 +36,7 @@ public class MemberController {
     view.printNoEditMessage();
     String lastName = view.askEditLastName();
     view.printNoEditMessage();
-    String personalNr = view.askEditPersonalNr();
+    PersonalNumber personalNr = view.askEditPersonalNr();
 
     if (firstName != null) {
       member.setFirstName(firstName);

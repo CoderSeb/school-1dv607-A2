@@ -2,6 +2,7 @@ package view;
 
 import error.InvalidInputException;
 import java.util.Scanner;
+import model.PersonalNumber;
 
 /**
  * The type Member view.
@@ -49,13 +50,13 @@ public class MemberView {
    *
    * @return the input.
    */
-  public String askEditPersonalNr() {
+  public PersonalNumber askEditPersonalNr() throws InvalidInputException {
     System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
-    String input = scan.nextLine();
-    if (isBlank(input)) {
-      return null;
+    PersonalNumber personalNumber = new PersonalNumber(scan.nextLine());
+    if (!personalNumber.valid) {
+      throw new InvalidInputException("Not a valid personal number.");
     }
-    return input;
+    return personalNumber;
   }
 
   /**

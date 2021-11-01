@@ -2,6 +2,7 @@ package view;
 
 import error.InvalidInputException;
 import java.util.Scanner;
+import model.PersonalNumber;
 
 /**
  * The type Register view.
@@ -41,10 +42,15 @@ public class RegisterView {
    * @return the string
    * @throws InvalidInputException the invalid input exception
    */
-  public String askPersonalNr() throws InvalidInputException {
+  public PersonalNumber askPersonalNr() throws InvalidInputException {
     System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
-    return validateInput(scan.nextLine());
+    PersonalNumber personalNumber = new PersonalNumber(validateInput(scan.nextLine()));
+    if (!personalNumber.valid) {
+      throw new InvalidInputException("Invalid personal number.");
+    }
+    return personalNumber;
   }
+
 
   /**
    * Prompts user to enter first name.

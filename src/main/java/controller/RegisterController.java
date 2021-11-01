@@ -2,6 +2,7 @@ package controller;
 
 import error.InvalidInputException;
 import model.Member;
+import model.PersonalNumber;
 import model.Register;
 import view.RegisterView;
 
@@ -53,7 +54,7 @@ public class RegisterController {
   public void createAndAddMember() throws InvalidInputException {
     String firstName = view.askFirstName();
     String lastName = view.askLastName();
-    String personalNr = view.askPersonalNr();
+    PersonalNumber personalNr = view.askPersonalNr();
     Member newMember = new Member(firstName, lastName, personalNr, createUniqueId());
     addMember(newMember);
   }
@@ -83,13 +84,13 @@ public class RegisterController {
    * @throws InvalidInputException the invalid input exception
    */
   public Member searchMemberByPersonalNr() throws InvalidInputException {
-    String personalNr = view.askPersonalNr();
-    if (personalNr != null) {
-      Member foundMember = model.findByPersonalNr(personalNr);
-      if (foundMember != null) {
-        return foundMember;
-      }
+    PersonalNumber personalNr = view.askPersonalNr();
+
+    Member foundMember = model.findByPersonalNr(personalNr);
+    if (foundMember != null) {
+      return foundMember;
     }
+
     view.printNoMemberFound();
     return null;
   }

@@ -72,9 +72,9 @@ public class Register {
    * @param personalNr the personal nr as a String.
    * @return the found member.
    */
-  public Member findByPersonalNr(String personalNr) {
+  public Member findByPersonalNr(PersonalNumber personalNr) {
     for (Member member : this.members) {
-      if (member.getPersonalNr().equals(personalNr)) {
+      if (member.getPersonalNr().equals(personalNr.getPersonalNumber())) {
         return member;
       }
     }

@@ -1,6 +1,5 @@
 package model;
 
-import error.InvalidInputException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,12 +22,11 @@ public class Member {
    * @param lastName   the last name
    * @param personalNr the personal nr
    * @param memberId   the member id
-   * @throws InvalidInputException the invalid input exception
    */
-  public Member(String firstName, String lastName, String personalNr, String memberId) throws InvalidInputException {
+  public Member(String firstName, String lastName, PersonalNumber personalNr, String memberId) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.personalNr = new PersonalNumber(personalNr);
+    this.personalNr = personalNr;
     this.memberId = memberId;
     this.boatList = new ArrayList<Boat>();
   }
@@ -82,10 +80,9 @@ public class Member {
    * Sets personal nr.
    *
    * @param personalNr the personal nr
-   * @throws InvalidInputException the invalid input exception
    */
-  public void setPersonalNr(String personalNr) throws InvalidInputException {
-    this.personalNr.setPersonalNumber(personalNr);
+  public void setPersonalNr(PersonalNumber personalNr) {
+    this.personalNr = personalNr;
   }
 
   /**
