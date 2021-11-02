@@ -68,15 +68,9 @@ public class MemberController {
    */
   public void registerBoat(Member member) throws InvalidInputException {
     String name = view.askBoatName();
-    String type = view.askBoatType();
+    Boat.BoatType type = view.askBoatType();
     Double length = view.askBoatLength();
-    String[] boatValues = {name, type};
-    if (Arrays.stream(boatValues).anyMatch(value -> value == null)) {
-      throw new InvalidInputException("You must enter a value.");
-    }
-    if (length == null) {
-      throw new InvalidInputException("You must enter a value.");
-    }
+
     Boat newBoat = new Boat(name, type, length);
     member.addBoat(newBoat);
   }
@@ -88,9 +82,9 @@ public class MemberController {
    * @throws InvalidInputException the invalid input exception
    */
   public void editBoat(Boat boat) throws InvalidInputException {
-    String boatName = view.askBoatName();
-    String boatType = view.askBoatType();
-    Double boatLength = view.askBoatLength();
+    String boatName = view.askEditBoatName();
+    Boat.BoatType boatType = view.askEditBoatType();
+    Double boatLength = view.askEditBoatLength();
 
     if (boatName != null) {
       boat.setName(boatName);
@@ -109,7 +103,7 @@ public class MemberController {
    * @param member the member
    * @return the boat
    */
-  public Boat chooseBoat(Member member) {
+  public Boat chooseBoat(Member member) throws InvalidInputException {
     String boatName = view.askBoatName();
     return member.findBoatByName(boatName);
   }
@@ -119,7 +113,7 @@ public class MemberController {
    *
    * @param member the member
    */
-  public void removeBoat(Member member) {
+  public void removeBoat(Member member) throws InvalidInputException {
     member.removeBoat(chooseBoat(member));
   }
 }

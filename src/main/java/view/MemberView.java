@@ -2,6 +2,7 @@ package view;
 
 import error.InvalidInputException;
 import java.util.Scanner;
+import model.Boat;
 import model.PersonalNumber;
 
 /**
@@ -94,13 +95,27 @@ public class MemberView {
    *
    * @return the input.
    */
-  public String askBoatName() {
+  public String askEditBoatName() {
     System.out.println("Please enter boat name: ");
     String boatName = scan.nextLine();
     if (!boatName.equals("")) {
       return boatName;
     }
     return null;
+  }
+
+  /**
+   * Prompts user to enter boat name.
+   *
+   * @return the input.
+   */
+  public String askBoatName() throws InvalidInputException {
+    System.out.println("Please enter boat name: ");
+    String boatName = scan.nextLine();
+    if (!boatName.equals("")) {
+      return boatName;
+    }
+    throw new InvalidInputException("Boat name cannot be empty!");
   }
 
   /**
@@ -138,7 +153,7 @@ public class MemberView {
    * @return the double
    * @throws InvalidInputException the invalid input exception
    */
-  public Double askBoatLength() throws InvalidInputException {
+  public Double askEditBoatLength() throws InvalidInputException {
     System.out.println("Please enter boat length in ft: ");
     String input = scan.nextLine().replace(',', '.');
     if (!input.equals("")) {
@@ -149,17 +164,67 @@ public class MemberView {
   }
 
   /**
+   * Prompts user to enter boat length.
+   *
+   * @return the double
+   * @throws InvalidInputException the invalid input exception
+   */
+  public Double askBoatLength() throws InvalidInputException {
+    System.out.println("Please enter boat length in ft: ");
+    String input = scan.nextLine().replace(',', '.');
+    if (!input.equals("")) {
+      return parseStringToDouble(input);
+    }
+
+    throw new InvalidInputException("Boat length cannot be empty!");
+  }
+
+  /**
    * Prompts user to enter boat type.
    *
-   * @return the input.
+   * @return the boat type.
    */
-  public String askBoatType() {
+  public Boat.BoatType askEditBoatType() throws InvalidInputException {
     System.out.println("Please choose a boat type: ");
     String input = scan.nextLine();
-    if (!input.equals("")) {
-      return input;
+
+    if (!isBlank(input)) {
+      return convertBoatType(input);
     }
 
     return null;
   }
+
+  /**
+   * Prompts user to enter boat type.
+   *
+   * @return the boat type.
+   */
+  public Boat.BoatType askBoatType() throws InvalidInputException {
+    System.out.println("Please choose a boat type: ");
+    String input = scan.nextLine();
+
+    if (!isBlank(input)) {
+      return convertBoatType(input);
+    }
+
+    throw new InvalidInputException("Boat type cannot be empty!");
+  }
+
+  /**
+   * Converts user string input to BoatType enum.
+   *
+   * @param type as the string input.
+   * @return the BoatType enum.
+   * @throws InvalidInputException as the exception if no BoatType could be matched.
+   */
+  private Boat.BoatType convertBoatType(String type) throws InvalidInputException {
+    for (Boat.BoatType boatType : Boat.BoatType.values()) {
+      if (boatType.label.toUpperCase().equals(type.toUpperCase())) {
+        return boatType;
+      }
+    }
+    throw new InvalidInputException("Boat type is not valid.");
+  }
+
 }

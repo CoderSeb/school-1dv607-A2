@@ -20,7 +20,7 @@ class BoatTests {
    */
   @BeforeEach
   void setUp() throws InvalidInputException {
-    boat = new Boat("TestBoat", "Motorsailer", 10.5);
+    boat = new Boat("TestBoat", Boat.BoatType.MOTORSAILER, 10.5);
   }
 
   /**
@@ -66,7 +66,7 @@ class BoatTests {
   @Test
   @DisplayName("Boat type setter should work.")
   void testBoatTypeSetter() throws InvalidInputException {
-    boat.setType("Sailboat");
+    boat.setType(Boat.BoatType.SAILBOAT);
     assertTrue(boat.getType().equals("Sailboat"));
   }
 

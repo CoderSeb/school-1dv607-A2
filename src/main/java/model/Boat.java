@@ -1,7 +1,5 @@
 package model;
 
-import error.InvalidInputException;
-
 /**
  * The type Boat.
  */
@@ -16,43 +14,13 @@ public class Boat {
    * @param name   the name
    * @param type   the type
    * @param length the length
-   * @throws InvalidInputException the invalid input exception
    */
-  public Boat(String name, String type, Double length) throws InvalidInputException {
+  public Boat(String name, BoatType type, Double length) {
     this.name = name;
     this.length = length;
-    this.type = validateBoatType(convertBoatType(type));
+    this.type = type;
   }
 
-  /**
-   * Returns the BoatType if it's valid.
-   *
-   * @param boatType as the BoatType.
-   * @return BoatType, or null.
-   * @throws InvalidInputException as the input exception.
-   */
-  private BoatType validateBoatType(BoatType boatType) throws InvalidInputException {
-    if (boatType == null) {
-      throw new InvalidInputException("Boat type is not valid.");
-    }
-    return boatType;
-  }
-
-  /**
-   * Converts a string input to a BoatType enum literal.
-   *
-   * @param boatType as a String.
-   * @return the corresponding BoatType enum literal.
-   */
-  private BoatType convertBoatType(String boatType) {
-    boatType = boatType.toUpperCase();
-    for (BoatType type : BoatType.values()) {
-      if (type.label.toUpperCase().equals(boatType)) {
-        return type;
-      }
-    }
-    return null;
-  }
 
   /**
    * Gets name.
@@ -85,10 +53,9 @@ public class Boat {
    * Sets type.
    *
    * @param type the type
-   * @throws InvalidInputException the invalid input exception
    */
-  public void setType(String type) throws InvalidInputException {
-    this.type = validateBoatType(convertBoatType(type));
+  public void setType(BoatType type) {
+    this.type = type;
   }
 
   /**
@@ -107,5 +74,22 @@ public class Boat {
    */
   public void setLength(Double length) {
     this.length = length;
+  }
+
+
+  /**
+   * The enum Boat type.
+   */
+  public enum BoatType {
+    SAILBOAT("Sailboat"),
+    MOTORSAILER("Motorsailer"),
+    CANOEORKAYAK("Canoe/Kayak"),
+    OTHER("Other");
+
+    public final String label;
+
+    private BoatType(String label) {
+      this.label = label;
+    }
   }
 }
