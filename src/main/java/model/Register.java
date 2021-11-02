@@ -103,14 +103,14 @@ public class Register {
     Random random = new Random();
     int maxLength = 6;
     String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    String result = "";
+    StringBuffer result = new StringBuffer();
 
     for (int i = 0; i < maxLength / 2; i++) {
       char randChar = alphabet.charAt(random.nextInt(alphabet.length()));
-      result += randChar;
-      result += String.valueOf(random.nextInt(10));
+      result.append(randChar);
+      result.append(random.nextInt(10));
     }
-    return result;
+    return result.toString();
   }
 
   /**

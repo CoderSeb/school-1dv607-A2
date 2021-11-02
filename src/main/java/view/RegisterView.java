@@ -14,7 +14,7 @@ public class RegisterView {
    * Instantiates a new Register view.
    */
   public RegisterView() {
-    this.scan = new Scanner(System.in);
+    this.scan = new Scanner(System.in, "utf-8");
   }
 
 

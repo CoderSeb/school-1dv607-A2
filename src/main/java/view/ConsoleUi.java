@@ -14,7 +14,7 @@ public class ConsoleUi {
    * Instantiates a new Console ui.
    */
   public ConsoleUi() {
-    this.scan = new Scanner(System.in);
+    this.scan = new Scanner(System.in, "utf-8");
   }
 
 

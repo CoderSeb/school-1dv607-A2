@@ -15,7 +15,7 @@ public class MemberView {
    * Instantiates a new Member view.
    */
   public MemberView() {
-    this.scan = new Scanner(System.in);
+    this.scan = new Scanner(System.in, "utf-8");
   }
 
   /**
