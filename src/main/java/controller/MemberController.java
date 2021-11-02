@@ -13,7 +13,6 @@ import view.MemberView;
 public class MemberController {
   private MemberView view;
 
-
   /**
    * Instantiates a new Member controller.
    *

@@ -32,6 +32,10 @@ public class Register {
     return readOnlyMembers;
   }
 
+  public Member createMember(String firstName, String lastName, PersonalNumber personalNumber, String memberId) {
+    return new Member(firstName, lastName, personalNumber, memberId);
+  }
+
   /**
    * Add member.
    *

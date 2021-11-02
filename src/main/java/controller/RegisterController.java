@@ -37,16 +37,6 @@ public class RegisterController {
   }
 
   /**
-   * Add member.
-   *
-   * @param member the member
-   */
-  private void addMember(Member member) {
-    model.addMember(member);
-  }
-
-
-  /**
    * Create and add member.
    *
    * @throws InvalidInputException the invalid input exception
@@ -55,8 +45,7 @@ public class RegisterController {
     String firstName = view.askFirstName();
     String lastName = view.askLastName();
     PersonalNumber personalNr = view.askPersonalNr();
-    Member newMember = new Member(firstName, lastName, personalNr, createUniqueId());
-    addMember(newMember);
+    model.addMember(model.createMember(firstName, lastName, personalNr, createUniqueId()));
   }
 
   /**
