@@ -70,8 +70,7 @@ public class MemberController {
     Boat.BoatType type = view.askBoatType();
     Double length = view.askBoatLength();
 
-    Boat newBoat = new Boat(name, type, length);
-    member.addBoat(newBoat);
+    member.createAndAddBoat(name, type, length);
   }
 
   /**

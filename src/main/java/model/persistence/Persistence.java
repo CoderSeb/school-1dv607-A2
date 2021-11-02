@@ -15,6 +15,6 @@ public interface Persistence {
    * @return the array list with loaded members.
    * @throws InvalidInputException the invalid input exception.
    */
-  public ArrayList<Member> loadData() throws InvalidInputException;
+  public ArrayList<Member> loadData();
   // public void saveData();
 }

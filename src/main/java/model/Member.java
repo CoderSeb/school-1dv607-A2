@@ -120,11 +120,14 @@ public class Member {
   }
 
   /**
-   * Add boat.
+   * Create and add boat.
    *
-   * @param newBoat the new boat
+   * @param name   the name
+   * @param type   the type
+   * @param length the length
    */
-  public void addBoat(Boat newBoat) {
+  public void createAndAddBoat(String name, Boat.BoatType type, Double length) {
+    Boat newBoat = new Boat(name, type, length);
     boatList.add(newBoat);
   }
 

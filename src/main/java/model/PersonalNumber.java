@@ -30,15 +30,6 @@ public class PersonalNumber {
   }
 
   /**
-   * Sets personal number.
-   *
-   * @param newPersonalNumber the new personal number
-   */
-  public void setPersonalNumber(String newPersonalNumber) {
-    personalNumber = newPersonalNumber;
-  }
-
-  /**
    * Validates personal number.
    *
    * @return a boolean depending on the validity of the new personal number.
