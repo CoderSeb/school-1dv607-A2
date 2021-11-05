@@ -44,8 +44,10 @@ public class RegisterView {
    */
   public PersonalNumber askPersonalNr() throws InvalidInputException {
     System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
-    PersonalNumber personalNumber = new PersonalNumber(validateInput(scan.nextLine()));
-    if (!personalNumber.valid) {
+    PersonalNumber personalNumber;
+    try {
+      personalNumber = new PersonalNumber(validateInput(scan.nextLine()));
+    } catch (IllegalArgumentException e) {
       throw new InvalidInputException("Invalid personal number.");
     }
     return personalNumber;

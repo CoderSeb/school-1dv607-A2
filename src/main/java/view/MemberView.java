@@ -53,8 +53,10 @@ public class MemberView {
    */
   public PersonalNumber askEditPersonalNr() throws InvalidInputException {
     System.out.println("Please enter personal nr (YYMMDD-XXXX): ");
-    PersonalNumber personalNumber = new PersonalNumber(scan.nextLine());
-    if (!personalNumber.valid) {
+    PersonalNumber personalNumber;
+    try {
+      personalNumber = new PersonalNumber(scan.nextLine());
+    } catch (IllegalArgumentException e) {
       throw new InvalidInputException("Not a valid personal number.");
     }
     return personalNumber;
