@@ -1,9 +1,9 @@
 package view;
 
-import error.InvalidInputException;
 import java.util.Scanner;
 import model.Boat;
 import model.PersonalNumber;
+import view.error.InvalidInputException;
 
 /**
  * The type Member view.

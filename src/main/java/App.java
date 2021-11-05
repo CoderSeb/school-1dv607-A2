@@ -1,7 +1,6 @@
 import controller.ConsoleUiController;
 import controller.MemberController;
 import controller.RegisterController;
-import error.InvalidInputException;
 import model.Register;
 import view.ConsoleUi;
 import view.MemberView;
@@ -15,9 +14,8 @@ public class App {
    * The entry point of application.
    *
    * @param args the input arguments
-   * @throws InvalidInputException the invalid input exception
    */
-  public static void main(String[] args) throws InvalidInputException {
+  public static void main(String[] args) {
     ConsoleUi mainUi = new ConsoleUi();
 
     Register regModel = new Register();

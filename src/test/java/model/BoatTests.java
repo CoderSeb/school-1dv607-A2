@@ -1,6 +1,6 @@
 package model;
 
-import error.InvalidInputException;
+import view.error.InvalidInputException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

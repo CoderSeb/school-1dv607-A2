@@ -1,11 +1,10 @@
 package controller;
 
-import error.InvalidInputException;
-import java.util.Arrays;
 import model.Boat;
 import model.Member;
 import model.PersonalNumber;
 import view.MemberView;
+import view.error.InvalidInputException;
 
 /**
  * The type Member controller.

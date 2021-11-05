@@ -1,10 +1,10 @@
 package controller;
 
-import error.InvalidInputException;
 import model.Member;
 import model.PersonalNumber;
 import model.Register;
 import view.RegisterView;
+import view.error.InvalidInputException;
 
 /**
  * The type Register controller.
@@ -45,7 +45,7 @@ public class RegisterController {
     String firstName = view.askFirstName();
     String lastName = view.askLastName();
     PersonalNumber personalNr = view.askPersonalNr();
-    model.addMember(model.createMember(firstName, lastName, personalNr, createUniqueId()));
+    model.createAndAddMember(firstName, lastName, personalNr);
   }
 
   /**
@@ -113,14 +113,5 @@ public class RegisterController {
       view.printMemberCompact(member.getFirstName(), member.getLastName(), member.getMemberId(),
           member.getAmountOfBoats());
     }
-  }
-
-  /**
-   * Create unique id string.
-   *
-   * @return the string
-   */
-  public String createUniqueId() {
-    return model.generateUniqueId();
   }
 }

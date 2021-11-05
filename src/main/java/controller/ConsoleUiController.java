@@ -1,9 +1,9 @@
 package controller;
 
-import error.InvalidInputException;
 import model.Boat;
 import model.Member;
 import view.ConsoleUi;
+import view.error.InvalidInputException;
 
 /**
  * The type Console ui controller.

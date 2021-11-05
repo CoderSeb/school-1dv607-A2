@@ -1,6 +1,5 @@
 package model;
 
-import error.InvalidInputException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,11 +14,10 @@ public class Register {
 
   /**
    * Instantiates a new Register.
-   *
-   * @throws InvalidInputException the invalid input exception
    */
-  public Register() throws InvalidInputException {
-    this.members = new MockData().loadData();
+  public Register() {
+    this.members = new ArrayList<Member>();
+    new MockData().loadData(this);
   }
 
   /**
@@ -32,8 +30,8 @@ public class Register {
     return readOnlyMembers;
   }
 
-  public Member createMember(String firstName, String lastName, PersonalNumber personalNumber, String memberId) {
-    return new Member(firstName, lastName, personalNumber, memberId);
+  public void createAndAddMember(String firstName, String lastName, PersonalNumber personalNumber) {
+    this.members.add(new Member(firstName, lastName, personalNumber, generateUniqueId()));
   }
 
   /**
@@ -42,6 +40,9 @@ public class Register {
    * @param newMember the new member
    */
   public void addMember(Member newMember) {
+    if (!isUnique(newMember.getMemberId())) {
+      throw new IllegalArgumentException("Member id is not unique!");
+    }
     this.members.add(newMember);
   }
 
@@ -90,7 +91,7 @@ public class Register {
    *
    * @return the string
    */
-  public String generateUniqueId() {
+  private String generateUniqueId() {
     String newId;
     do {
       newId = generateId();

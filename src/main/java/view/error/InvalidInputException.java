@@ -1,4 +1,4 @@
-package error;
+package view.error;
 
 /**
  * The type Invalid input exception.

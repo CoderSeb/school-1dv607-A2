@@ -1,7 +1,7 @@
 package view;
 
-import error.InvalidInputException;
 import java.util.Scanner;
+import view.error.InvalidInputException;
 
 
 /**

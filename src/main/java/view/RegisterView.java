@@ -1,8 +1,8 @@
 package view;
 
-import error.InvalidInputException;
 import java.util.Scanner;
 import model.PersonalNumber;
+import view.error.InvalidInputException;
 
 /**
  * The type Register view.

@@ -296,7 +296,7 @@ public class CodeQualityTests {
           f.text = "";
 
           Node childNode = childNodes.item(cnIx);
-          if (childNode.getNodeName().equals("error")) {
+          if (childNode.getNodeName().equals("view/error")) {
             String message = childNode.getAttributes().getNamedItem("message").getTextContent();
             String line =  childNode.getAttributes().getNamedItem("line").getTextContent();
             String col =  childNode.getAttributes().getNamedItem("column") != null ? " column:" + childNode.getAttributes().getNamedItem("column").getTextContent() : "";
